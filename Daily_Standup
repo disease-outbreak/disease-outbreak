@@ -1,0 +1,39 @@
+# Disease Outbreak Detection Project
+
+## Subtitle: "Prevention is better than cure" - Desiderus Erasmus
+
+**Date:** 26 October 2023
+
+**Elevator Pitch:** While a world without disease remains a distant goal, our Global Disease Outbreak Detection Project leverages modern technology and data science to identify potential outbreaks before they escalate, potentially saving millions of lives. Our multidisciplinary team of data scientists has worked tirelessly to develop a predictive model that provides crucial lead time for health organizations and authorities to mitigate the next potential outbreak.
+
+**GitHub Repository:** [Disease Outbreak GitHub Repository](https://github.com/disease-outbreak/disease-outbreak/tree/main)
+
+**Team Members:**
+- Project Lead: Theodore Quansah
+- Data Engineer: Nisha
+- Data Analyst: Adam
+- Data Engineer: Marcilino
+
+## Project Overview
+The primary goal of this project is to develop a predictive model that can detect disease outbreaks with high accuracy and facilitate
+
+**Data Sources:** CDC and WHO.com
+
+**Target Variable:** Outbreak
+
+**One Observation Represents:**
+
+**Initial notes/things to watch out for:** 
+
+## Deliverables
+- [README.md](#) - Project documentation
+- [Kanban board](#) - Project progress tracking
+- [Lesson Learn](#) - Documentation on lessons learned
+- [Learn that this project will help](#) - Explanation of the project's impact
+
+## Obstacles
+- Finding data for the top diseases: Covid, HIV/AIDS, Flu Pandemic
+
+---
+
+**Date:** 27 October 2023
