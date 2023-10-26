@@ -28,5 +28,4 @@ To replicate this project on your local machine, follow these steps:
    git clone https://github.com/yourusername/disease-outbreak-project.git
    cd disease-outbreak-project
    
-Links:
-Daily Standups: https://docs.google.com/document/d/1h0yKPd0KyspVQtW_11mZwwo6jhKobRt9lQHzATV32MI/edit
+
