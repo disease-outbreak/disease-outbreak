@@ -1,4 +1,4 @@
-# Disease Outbreak Detection Project
+# National Disease Outbreak Detection Project
 
 ## Abstract
 
