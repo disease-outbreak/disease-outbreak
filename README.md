@@ -10,21 +10,20 @@ The primary goal of this project is to develop a predictive model that can detec
 
 ## Data Dictionary
 
-For detailed information on the dataset used and data attributes, please refer to the [Data Dictionary](data_dictionary.md) file.
+For detailed information on the dataset used and data attributes
 
 ## Team
 
-- **Project Lead:** Your Name
-- **Data Scientist:** Team Member Name
-- **Epidemiologist:** Team Member Name
-- **Data Engineer:** Team Member Name
-- **Public Health Specialist:** Team Member Name
+- **Project Lead:** Theodore Quansah
+- **Data Engineer:** 
+- **Data Analyst:** 
+- **Data Scientist:** 
 
 ## How to Duplicate This Project
 
 To replicate this project on your local machine, follow these steps:
 
 1. **Clone the Repository:**
-   ```bash
+   ```bash on Windows
    git clone https://github.com/yourusername/disease-outbreak-project.git
    cd disease-outbreak-project
