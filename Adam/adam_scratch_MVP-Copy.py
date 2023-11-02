@@ -21990,28 +21990,6 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 1,
-   "id": "f3519cc6",
-   "metadata": {},
-   "outputs": [
-    {
-     "ename": "NameError",
-     "evalue": "name 'y_pred_knn_test' is not defined",
-     "output_type": "error",
-     "traceback": [
-      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
-      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
-      "Cell \u001b[0;32mIn[1], line 1\u001b[0m\n\u001b[0;32m----> 1\u001b[0m \u001b[43my_pred_knn_test\u001b[49m\n",
-      "\u001b[0;31mNameError\u001b[0m: name 'y_pred_knn_test' is not defined"
-     ]
-    }
-   ],
-   "source": [
-    "y_pred_knn_test"
-   ]
-  },
-  {
-   "cell_type": "code",
    "execution_count": 47,
    "id": "f6f82c5b",
    "metadata": {},
