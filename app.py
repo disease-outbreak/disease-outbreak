@@ -44,4 +44,4 @@ if diseases_associated_with_symptoms:
     for disease in mutual_diseases:
         st.write(disease)
 else:
-    st.write("Sorry, it looks like there are no diseases that correlate with those symptoms in our database.")
+    st.write("Please enter your symptom(s). Pretty Please.")
