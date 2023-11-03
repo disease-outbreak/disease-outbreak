@@ -3,8 +3,6 @@ import pandas as pd
 
 
 
-
-
 # Load your data
 data = pd.read_csv('unique_patterns.csv')
 
@@ -23,10 +21,15 @@ diseases_associated_with_symptoms = {}
 for symptom in selected_symptoms:
     diseases_associated_with_symptoms[symptom] = set(data[data[symptom] == 1]['Disease'].unique())
 
-# Find mutual diseases associated with all selected symptoms
-mutual_diseases = set.intersection(*map(set, diseases_associated_with_symptoms.values()))
+if diseases_associated_with_symptoms:
 
-# Display the mutual diseases
-st.write("You may have this disease(s) with all selected symptoms:")
-for disease in mutual_diseases:
-    st.write(disease)
+    # Find mutual diseases associated with all selected symptoms
+    mutual_diseases = set.intersection(*map(set, diseases_associated_with_symptoms.values()))
+
+    # Display the mutual diseases
+    st.write("From the selected symptoms, we think you may have these:")
+    for disease in mutual_diseases:
+        st.write(disease)
+else:
+    
+    st.write("Please enter in your symptom(s). Pretty Please.")
