@@ -60,20 +60,15 @@ For detailed information on the dataset used and data attributes
 
 
 
->>>>>>> ee93635caf4bfe2c4af030def927087358ae64ef
+
 
 ## Team
 
 - **Project Lead:** Theodore Quansah
-<<<<<<< HEAD
-- **Data Engineer:** 
-- **Data Analyst:** 
-- **Data Scientist:** 
-=======
 - **Data Engineer:** Nisha
 - **Data Analyst:** Adam
 - **Data Scientist:** Marcelino
->>>>>>> ee93635caf4bfe2c4af030def927087358ae64ef
+
 
 ## How to Duplicate This Project
 
@@ -83,12 +78,12 @@ To replicate this project on your local machine, follow these steps:
    ```bash on Windows
    git clone https://github.com/yourusername/disease-outbreak-project.git
    cd disease-outbreak-project
-<<<<<<< HEAD
+
 =======
 2. **Install Dependencies:**
    ```bash on Windows
    set seed = 42
    
->>>>>>> ee93635caf4bfe2c4af030def927087358ae64ef
+f
    
 
