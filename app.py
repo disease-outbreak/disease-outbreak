@@ -4,6 +4,21 @@ import pandas as pd
 # Load your data
 data = pd.read_csv('unique_patterns.csv')
 
+def add_bg_from_url():
+    st.markdown(
+         f"""
+         <style>
+         .stApp {{
+             background-image: url("https://cdn.pixabay.com/photo/2019/04/24/11/27/flowers-4151900_960_720.jpg");
+             background-attachment: fixed;
+             background-size: cover;
+         }}
+         </style>
+         """,
+         unsafe_allow_html=True
+    )
+
+add_bg_from_url()
 
 st.title("Disease Prediction App")
 
@@ -21,7 +36,6 @@ for symptom in selected_symptoms:
     diseases_associated_with_symptoms[symptom] = set(data[data[symptom] == 1]['Disease'].unique())
 
 if diseases_associated_with_symptoms:
-
     # Find mutual diseases associated with all selected symptoms
     mutual_diseases = set.intersection(*map(set, diseases_associated_with_symptoms.values()))
 
@@ -30,6 +44,4 @@ if diseases_associated_with_symptoms:
     for disease in mutual_diseases:
         st.write(disease)
 else:
-    
-    st.write("Please enter in your symptom(s). Pretty Please.")
-    
+    st.write("Sorry, it looks like there are no diseases that correlate with those symptoms in our database.")
