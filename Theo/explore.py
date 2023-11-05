@@ -72,7 +72,7 @@ def check_correlation(df, disease, symptom, alpha=0.05):
 
 
 
-def plot_disease_counts(df, n=20):
+def plot_disease_counts(df, n=10):
     """
     Plots the count of the top n diseases in the DataFrame.
     
@@ -93,7 +93,7 @@ def plot_disease_counts(df, n=20):
 
 
 
-def plot_symptom_frequency(df, n=20):
+def plot_symptom_frequency(df, n=10):
     """
     Plots the frequency of the top n symptoms in the DataFrame.
     
@@ -179,7 +179,7 @@ def generate_ngrams_from_df(df):
 
 
 
-def plot_top_n_bi_grams(bi_gram_counts, n=20):
+def plot_top_n_bi_grams(bi_gram_counts, n=10):
     """
     This function sorts the bi-gram counts dictionary by values in descending order,
     and plots the top N bi-grams and their frequencies.
@@ -204,7 +204,7 @@ def plot_top_n_bi_grams(bi_gram_counts, n=20):
 
 
 
-def plot_top_n_tri_grams(tri_gram_counts, n=20):
+def plot_top_n_tri_grams(tri_gram_counts, n=10):
     """
     This function sorts the tri-gram counts dictionary by values in descending order,
     and plots the top N tri-grams and their frequencies using a horizontal bar chart.
