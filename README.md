@@ -349,7 +349,7 @@ Summary of modeling choices...
 </details>  
 
 
-## <a name="Recreate This Project"></a> 
+## <a name="Recreate"></a> 
 ![recreate](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2010.53.45%20AM.png?raw=true)
 [[Back to top](#top)]
 
