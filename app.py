@@ -4,6 +4,8 @@ import pandas as pd
 # Load your data
 data = pd.read_csv('unique_patterns.csv')
 
+<<<<<<< HEAD
+=======
 def add_bg_from_url():
     st.markdown(
          f"""
@@ -19,6 +21,7 @@ def add_bg_from_url():
     )
 
 add_bg_from_url()
+>>>>>>> 017652d447f1249a1e56a0d8b0b8902052ce62a7
 
 st.title("Disease Prediction App")
 
@@ -36,6 +39,10 @@ for symptom in selected_symptoms:
     diseases_associated_with_symptoms[symptom] = set(data[data[symptom] == 1]['Disease'].unique())
 
 if diseases_associated_with_symptoms:
+<<<<<<< HEAD
+
+=======
+>>>>>>> 017652d447f1249a1e56a0d8b0b8902052ce62a7
     # Find mutual diseases associated with all selected symptoms
     mutual_diseases = set.intersection(*map(set, diseases_associated_with_symptoms.values()))
 
@@ -44,4 +51,10 @@ if diseases_associated_with_symptoms:
     for disease in mutual_diseases:
         st.write(disease)
 else:
+<<<<<<< HEAD
+    
+    st.write("Please enter in your symptom(s). Pretty Please.")
+    
+=======
     st.write("Please enter your symptom(s). Pretty Please.")
+>>>>>>> 017652d447f1249a1e56a0d8b0b8902052ce62a7

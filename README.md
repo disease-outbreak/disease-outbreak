@@ -1,56 +1,42 @@
 <a name="top"></a>
-![name of photo](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/pd.png?raw=true)
+![name of photo](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%209.10.45%20AM.png?raw=true)
 
 ***
--[[Project Description](#project_description)]
--[[Project Planning](#planning)]
--[[Key Findings](#findings)]
--[[Data Dictionary](#dictionary)]
--[[Acquire & Prep](#acquire_and_prep)]
--[[Data Exploration](#explore)]
--[[Statistical Analysis](#stats)]
--[[Modeling](#model)]
--[[Conclusion](#conclusion)]
--[[Recreate This Project](#recreate)]
--[[Meet the Team](#team)]
+[[Description](#project_description)]
+[[Planning](#planning)]
+[[Acquire & Prep](#acquire_and_prep)]
+[[Exploration](#explore)]
+[[Modeling](#model)]
+[[Conclusion](#conclusion)]
+[[Recreate](#recreate)]
+[[Meet the Team](#team)]
 ___
 
 
 ## <a name="project_description"></a>
-![desc](https://github.com/3-1-1-Codeup/project/blob/main/workbooks/caitlyn/images/read_me_take3/description.png?raw=true)
+![desc](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%209.47.31%20AM.png?raw=true)
 [[Back to top](#top)]
 
 <details>
   <summary>Click to expand!</summary>
 
 ### Description
-The Disease Prognosis Project is a data-driven initiative aimed at early identification and monitoring of disease symptoms for all individuals. Leveraging data science and machine learning, we strive to improve prognosis and symptom surveillance to mitigate health risks.
+    
+Diagnosis of diseases often requires expertise and thorough medical examination. However, for common ailments or as a preliminary diagnostic tool, we aim to utilize symptom data to predict potential diseases. This tool can assist healthcare professionals as a reference, guide patients in understanding their conditions, or even help in telemedicine where immediate physical diagnosis isn't feasible.
 
 ### Goals
-The primary goal of this project is to develop a predictive model that can prognose a disease with high accuracy. By analyzing data acquired from the World Health Orginization related to disease symptoms in the U.S., we aim to create a reliable and user-friendly tool for individuals and public health organizations.
-
-
+    
+The primary goal of this project is to develop a predictive model that can predict a disease with high accuracy. By analyzing data acquired from the World Health Orginization related to disease symptoms in the U.S., we aim to create a reliable and user-friendly tool for individuals and public health organizations.
     
 ### Data Source
+    
 - Data was gathered from "The World Health Organization" website
     - https://data.sanantonio.gov/dataset/service-calls/resource/20eb6d22-7eac-425a-85c1-fdb365fd3cd7
 - Other data from the following website to create a dashboard of mortality rates.
     - https://sa2020.org/city-council-profiles
 
 
-***
-</details>
-    
-
-## <a name="dictionary"></a>
-![dict](https://github.com/3-1-1-Codeup/project/blob/main/workbooks/caitlyn/images/read_me_take3/dict.png?raw=true)
-
-[[Back to top](#top)]
-
-<details>
-  <summary>Click to expand!</summary>
-
-### Data Used
+### Data Dictionary
     
 | Attribute | Definition | Data Type |
 | ----- | ----- | ----- | 
@@ -77,148 +63,129 @@ The primary goal of this project is to develop a predictive model that can progn
 ***
 </details>
 
+## <a name="planning"></a> 
+![plan](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2011.14.17%20AM.png?raw=true)
+[[Back to top](#top)]
+
+<details>
+  <summary>Click to expand!</summary>
+
+### Project Outline:
+    
+- Initial Questions:
+    - How do we plan to accomplish this project based off the goal?
+    - How will it be used?
+    - Formulate hypothesis
+    - Where and how we will acquire data?
+    - What specific features to move forward with?
+    - Read the data into python environment
+    - Save data in a file    
+  
+- Acquisiton of data:
+    - Download CSV from the City of San Antonio website.
+        - https://data.sanantonio.gov/dataset/service-calls/resource/20eb6d22-7eac-425a-85c1-fdb365fd3cd7 
+    - Read data into python
+    - Summarize data
+    
+- Prepare and clean data with python - Jupyter Labs: 
+    - Potentially Drop features
+    - Handle null values
+    - Adjust data types
+    - Rename columns
+  
+- Explore data:
+    - Ask questions about our data
+    - Make a hypothesis
+    - Create visuals
+    - Run statistical test
+    
+- Modeling:
+    - Create multiple models
+    - Choose the best model
+    - Run a test
+    - Conclude results
+    - Make recommendations
+
+### Target variable
+- 'Disease'
+
+***
+</details>
+
 ## <a name="acquire_and_prep"></a> 
-![acquire_prep](https://github.com/3-1-1-Codeup/project/blob/main/workbooks/caitlyn/images/read_me_take3/a&p.png?raw=true)
+![acquire_prep](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%209.52.48%20AM.png?raw=true)
 [[Back to top](#top)]
 
 <details>
   <summary>Click to expand!</summary>
 
 ### Acquire Data:
-- Data was gathered from "The City of San Antonio" website
+- Data was gathered from "The World Health Organization" website
     - https://data.sanantonio.gov/dataset/service-calls/resource/20eb6d22-7eac-425a-85c1-fdb365fd3cd7
-  
-- Added data from the following website to create features such as per_capita_income, voter_turnout, etc.
+- Other data from the following website to create a dashboard of mortality rates.
     - https://sa2020.org/city-council-profiles
     
+The dataset comprises various diseases and their associated symptoms. Each disease can have multiple symptoms, and each symptom can be associated with multiple diseases
+    
+- Dataset Structure
+    - Disease and symptoms:
+        - Rows: 4920
+        - Columns: 18
+    - Symptoms and Severity:
+        - Rows: 133
+        - Columns:2
+    
 ### Prepare Data
-*All functions for the following preparation can be found in the wrangle.py file on our github repository.*
-- Make case id the index
-- Handle null values 
-- Remove unneeded features
-- Create new features such as:
-    - days_open
-    - resolution_days_due
-    - days_before_or_after_due
-    - pct_time_of_used
-    - voter_turnout_2019
-    - num_of_registered_voters
-    - per_capita_income
-- Create dummy columns for district
-- Rename the features to make them easier to understand and to make them easier for python to call
-- Merge some values that go hand in hand from reason for calling 
-- Extract zip code from the address
+- Convert symptom columns to consistent data types.
+- One-hot encode each symptom column.
+- Aggregate the one-hot encoded columns to remove duplicates.
+- Construct the final dataset combining diseases and their respective symptoms.
 
 ***
 
 </details>
 
-
-
 ## <a name="explore"></a> 
-![dict](https://github.com/3-1-1-Codeup/project/blob/main/workbooks/caitlyn/images/read_me_take3/explore.png?raw=true)
+![dict](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%209.58.00%20AM.png?raw=true)
 [[Back to top](#top)]
 
 <details>
   <summary>Click to expand!</summary>
     
-### Findings:
-- Each department has better levels of response in certain areas.
-- The departments with the lowest number of calls were more likely to have worse response times
-- Internal requests were generally late in comparison to other forms of reporting. While mobile app was generally completed early.
-- Customer Service generally got issues resolved late or very late.
-- Animal Services usually only gave a day to complete a case and those cases usually took months to close.
-- Winter months tend to have the longest average days open time, while Autumn months have the shortest.
+### Split data:
+- Training set (60%)
+- Validation set (20%)
+- Test set (20%)
 
+### Statistical Analysis of Symptoms and Conditions:
+  - A high statistical significance was found between abdominal pain and Alcoholic Hepatitis P less than .05 with a T-statistic of 21.049 and a P-value of approximately 2.996 x 10^-94, indicating a robust correlation.
+  - Vomiting showed a strong statistical association with Chronic Cholestasis, evidenced by a T-statistic of 12.975 and a P-value around 7.03 x 10^-38, also significantly surpassing the standard significance threshold.
 
-***
+### Clinical Insights from Statistical Findings:
+  - Abdominal pain as a symptom warrants consideration for Alcoholic Hepatitis diagnosis.
+  - Vomiting is a significant indicator for Chronic Cholestasis and should be factored into diagnostic processes for this condition.
 
-</details>    
+### Symptom Frequency Analysis:
+  - "Fever" emerged as the most common symptom, highlighting its prevalence across various diseases.
+  - Symptoms associated with respiratory issues and general malaise such as "cough," "headache," and "fatigue" are frequently reported.
+  - Liver-related symptoms like "jaundice" were noted, suggesting liver issues are represented within the dataset.
+  - Gastrointestinal symptoms such as "vomiting" and "diarrhea" are commonly reported, indicating the importance of digestive health in the dataset's scope.
 
-## <a name="stats"></a> 
-![stats](https://github.com/3-1-1-Codeup/project/blob/main/workbooks/caitlyn/images/read_me_take3/stats.png?raw=true)
-[[Back to top](#top)]
-<details>
-  <summary>Click to expand!</summary>
+### N-Gram Analysis Insights:
+  - Bi-grams such as "loss of" and "high fever" are prevalent, reflecting common symptom descriptions or pairings.
+  - Tri-grams like "loss of appetite" provide a more detailed picture of symptom patterns, with this particular tri-gram being the most frequent.
+  - The bi-gram and tri-gram visualizations reveal common co-occurring symptoms, which can aid in symptom pattern recognition and possibly hint at underlying conditions.
 
-### Stats Test 1:
-  
-#### Confidence level and alpha value:
-- 95% confidence
-  - alpha = 0.05
-  
+### Overall Summary:
+  - The analysis underlines the significance of fever as a common presenting symptom, which may be of interest for broader epidemiological studies.
+  - The data underscores the importance of considering symptom patterns, such as abdominal pain and vomiting, in the clinical assessment and potential diagnosis of liver diseases.
+  - The use of bi-grams and tri-grams has proven effective in identifying common symptom pairs and clusters within the dataset, offering valuable insights for healthcare professionals to refine their diagnostic criteria and for researchers to understand symptomatology better.
 
-- What is the test?
-    - ANOVA test.
-- Why use this test?
-    - The ANOVA test tests the means between many groups to determine if there is a difference.
-- What is being compared?
-    - The mean of days before or after due for each district.
-- Question being asked:
-    -Is there a significant difference between districts for days before or after due date?
-    
-#### Hypothesis:
-
-- Null Hypothesis: There is no difference in days before or after due date between the districts.
-
-- Alternative Hypothesis: There is a significant difference in days before or after due date between the districts.
-
-#### Results:
-- We reject the null hypothesis.
-
-### Stats Test 2:
-    
-#### Confidence level and alpha value:
-- 95% confidence
-  - alpha = 0.05
-    
-- What
-    - Chi$^2$ Test.
-- Why use this test?
-    - This test was used because it compares two categorical data variables.
-- What is being compared?
-    -   Call reason and level of delay
-- Question being asked:
-    - Is there a significant difference between the call reason and level of delay?
-
-#### Hypothesis:
-- Null Hypothesis: "The call reason of the issue and the level of delay are independent from each other"
-    
-- Alternative Hypothesis: "The call reason and the level of delay are dependent from one another."
-
-#### Results:
-- We reject the null hypothesis.
-
-### Stats Test 3:
-    
-#### Confidence level and alpha value:
-- 95% confidence
-  - alpha = 0.05
-    
-- What is the test?
-    - Mann-Whitney U Test.
-- Why use this test?
-    - This test was used because it is used to test whether two samples are likely to derive from the same population .
-- What is being compared?
-    - Response times between districts that fall below 20,000 per capita income and districts that fall above 20,000 per capita income.
-- Question being asked:
-    - Is there a difference for response time for all districts that fall below 20,000 per capita income and those that are above?
-    
-#### Hypothesis:
-- Null Hypothesis: There is no difference between districts that fall below 20,000 per capita income and districts that fall above 20,000 per capita income response time.
-    
-- Alternative Hypothesis: There is a difference between districts that fall below 20,000 per capita income and districts that fall above 20,000 per capita income response time.
-
-#### Results:
-- We reject the null hypothesis
-
-***
-
-    
+***   
 </details>    
 
 ## <a name="model"></a> 
-![model](https://github.com/3-1-1-Codeup/project/blob/main/workbooks/caitlyn/images/read_me_take3/model.png?raw=true)
+![model](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2010.27.47%20AM.png?raw=true)
 [[Back to top](#top)]
 <details>
   <summary>Click to expand!</summary>
@@ -268,7 +235,7 @@ Summary of modeling choices...
 </details>  
 
 ## <a name="conclusion"></a> 
-![conclusion](https://github.com/3-1-1-Codeup/project/blob/main/workbooks/caitlyn/images/read_me_take3/conclusion.png?raw=true)
+![conclusion](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2010.00.09%20AM.png?raw=true)
 [[Back to top](#top)]
 <details>
   <summary>Click to expand!</summary>
@@ -304,8 +271,8 @@ Summary of modeling choices...
 </details>  
 
 
-## <a name="Recreate This Project"></a> 
-![recreate](https://github.com/3-1-1-Codeup/project/blob/main/workbooks/caitlyn/images/read_me_take3/recreate.png?raw=true)
+## <a name="recreate"></a> 
+![recreate](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2010.53.45%20AM.png?raw=true)
 [[Back to top](#top)]
 
 <details>
@@ -325,11 +292,11 @@ Good luck I hope you enjoy your project!
 </details>
     
 ## <a name="team"></a>
-![meet](https://github.com/3-1-1-Codeup/project/blob/main/workbooks/caitlyn/images/read_me_take3/meet.png?raw=true)
+![meet](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2010.52.03%20AM.png?raw=true)
 
-A big thank you to the team that made this all possible:
+The Dream Team:
 
-![team](?raw=true)
+![team](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%201.29.42%20PM.png?raw=true)
 
 
 >>>>>>>>>>>>>>>
