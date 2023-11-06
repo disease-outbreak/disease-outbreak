@@ -280,7 +280,7 @@ Summary of modeling choices...
 
 
 ## <a name="Recreate This Project"></a> 
-![recreate](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2010.31.40%20AM.png?raw=true)
+![recreate](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2010.53.45%20AM.png?raw=true)
 [[Back to top](#top)]
 
 <details>
@@ -300,7 +300,7 @@ Good luck I hope you enjoy your project!
 </details>
     
 ## <a name="team"></a>
-![meet](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2010.45.38%20AM.png?raw=true)
+![meet](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2010.52.03%20AM.png?raw=true)
 
 A big thank you to the team that made this all possible:
 
