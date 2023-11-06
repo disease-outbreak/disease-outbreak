@@ -171,7 +171,7 @@ The primary goal of this project is to develop a predictive model that can progn
 
 
 ## <a name="explore"></a> 
-![dict](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%209.27.06%20AM.png?raw=true)
+![dict](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%209.58.00%20AM.png?raw=true)
 [[Back to top](#top)]
 
 <details>
