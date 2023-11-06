@@ -38,19 +38,7 @@ The primary goal of this project is to develop a predictive model that can progn
     - https://sa2020.org/city-council-profiles
 
 
-***
-</details>
-    
-
-## <a name="dictionary"></a>
-![dict](https://github.com/3-1-1-Codeup/project/blob/main/workbooks/caitlyn/images/read_me_take3/dict.png?raw=true)
-
-[[Back to top](#top)]
-
-<details>
-  <summary>Click to expand!</summary>
-
-### Data Used
+### Data Dictionary
     
 | Attribute | Definition | Data Type |
 | ----- | ----- | ----- | 
@@ -130,16 +118,6 @@ The primary goal of this project is to develop a predictive model that can progn
 - Animal Services usually only gave a day to complete a case and those cases usually took months to close.
 - Winter months tend to have the longest average days open time, while Autumn months have the shortest.
 
-
-***
-
-</details>    
-
-## <a name="stats"></a> 
-![stats](https://github.com/3-1-1-Codeup/project/blob/main/workbooks/caitlyn/images/read_me_take3/stats.png?raw=true)
-[[Back to top](#top)]
-<details>
-  <summary>Click to expand!</summary>
 
 ### Stats Test 1:
   
