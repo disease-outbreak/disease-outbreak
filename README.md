@@ -2,22 +2,19 @@
 ![name of photo](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%209.10.45%20AM.png?raw=true)
 
 ***
--[[Project Description](#project_description)]
--[[Project Planning](#planning)]
--[[Key Findings](#findings)]
--[[Data Dictionary](#dictionary)]
--[[Acquire & Prep](#acquire_and_prep)]
--[[Data Exploration](#explore)]
--[[Statistical Analysis](#stats)]
--[[Modeling](#model)]
--[[Conclusion](#conclusion)]
--[[Recreate This Project](#recreate)]
--[[Meet the Team](#team)]
+[[Project Description](#project_description)]
+[[Project Planning](#planning)]
+[[Acquire & Prep](#acquire_and_prep)]
+[[Data Exploration](#explore)]
+[[Modeling](#model)]
+[[Conclusion](#conclusion)]
+[[Recreate This Project](#recreate)]
+[[Meet the Team](#team)]
 ___
 
 
 ## <a name="project_description"></a>
-![desc](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%209.25.08%20AM.png?raw=true)
+![desc](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%209.47.31%20AM.png?raw=true)
 [[Back to top](#top)]
 
 <details>
