@@ -2,13 +2,13 @@
 ![name of photo](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%209.10.45%20AM.png?raw=true)
 
 ***
-[[Project Description](#project_description)]
-[[Project Planning](#planning)]
+[[Description](#project_description)]
+[[Planning](#planning)]
 [[Acquire & Prep](#acquire_and_prep)]
-[[Data Exploration](#explore)]
+[[Exploration](#explore)]
 [[Modeling](#model)]
 [[Conclusion](#conclusion)]
-[[Recreate This Project](#recreate)]
+[[Recreate](#recreate)]
 [[Meet the Team](#team)]
 ___
 
@@ -58,6 +58,76 @@ The primary goal of this project is to develop a predictive model that can progn
 | source_id | The source id is the method of input from which the case was received. | object |
     
 \*  Indicates the target feature in this City of San Antonio data.
+
+***
+</details>
+
+## <a name="planning"></a> 
+![plan](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2011.14.17%20AM.png?raw=true)
+[[Back to top](#top)]
+
+<details>
+  <summary>Click to expand!</summary>
+
+### Project Outline:
+  
+- Acquisition of data:
+- Download CSV from the City of San Antonio website.
+  - https://data.sanantonio.gov/dataset/service-calls/resource/20eb6d22-7eac-425a-85c1-fdb365fd3cd7
+- Bring data into python
+  
+  
+  
+  
+  Projet Outline:
+    
+- Acquisiton of data:
+    - Download CSV from the City of San Antonio website.
+        - https://data.sanantonio.gov/dataset/service-calls/resource/20eb6d22-7eac-425a-85c1-fdb365fd3cd7 
+    - Bring data into python
+    - Run basic exploration: 
+      -.info()
+      -.describe()
+      -.isnull()
+      -.value_counts()
+      -basic univariate
+      -key takeaways
+- Prepare and clean data with python - Jupyter Labs: 
+    - Set index
+    - Drop features
+    - Handle null values
+    - Handle outliers
+    - Merge some feature values (only the ones that go with each other)
+    - Rename
+    - Create
+    - Bin to create a new categorical feature(s)
+  
+- Explore data:
+    - What are the features?
+    - What questions are we aiming to answer?
+    - Categorical or continuous values.
+    - Make visuals (at least 2 to be used in deliverables)
+        - Univariate
+        - Bivariate
+        - Multivariate
+- Run statistical analysis:
+    - At least 2.
+- Modeling:
+    - Make multiple models.
+    - Pick best model.
+    - Test Data.
+    - Conclude results.
+        
+### Hypothesis/Questions
+- Does the type of call in an area affect the level of response?
+- Does the specific location affect the response time?
+- Do category and department affect response time?
+- Is there a link to which form of reporting is responded to quickest and slowest?
+
+### Target variable
+- `level_of_delay`
+    - Made in the feature engineering step.
+        - This feature takes the number of days a case was open (open-closed) and divided it by the number of days the case was given to be resolved and calculates the percent of the allocated resolution time that was used.
 
 ***
 </details>
@@ -302,9 +372,9 @@ Good luck I hope you enjoy your project!
 ## <a name="team"></a>
 ![meet](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2010.52.03%20AM.png?raw=true)
 
-A big thank you to the team that made this all possible:
+Contributers:
 
-![team](?raw=true)
+![team](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2011.43.16%20AM.png?raw=true)
 
 
 >>>>>>>>>>>>>>>
