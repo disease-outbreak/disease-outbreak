@@ -24,7 +24,7 @@ ___
 The Disease Prognosis Project is a data-driven initiative aimed at early identification and monitoring of disease symptoms for all individuals. Leveraging data science and machine learning, we strive to improve prognosis and symptom surveillance to mitigate health risks.
 
 ### Goals
-The primary goal of this project is to develop a predictive model that can prognose a disease with high accuracy. By analyzing data acquired from the World Health Orginization related to disease symptoms in the U.S., we aim to create a reliable and user-friendly tool for individuals and public health organizations.
+The primary goal of this project is to develop a predictive model that can predict a disease with high accuracy. By analyzing data acquired from the World Health Orginization related to disease symptoms in the U.S., we aim to create a reliable and user-friendly tool for individuals and public health organizations.
 
 
     
@@ -372,9 +372,9 @@ Good luck I hope you enjoy your project!
 ## <a name="team"></a>
 ![meet](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2010.52.03%20AM.png?raw=true)
 
-Contributers:
+The Dream Team:
 
-![team](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2011.43.16%20AM.png?raw=true)
+![team](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%201.29.42%20PM.png?raw=true)
 
 
 >>>>>>>>>>>>>>>
