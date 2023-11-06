@@ -11,7 +11,7 @@ def add_bg_from_url():
          f"""
          <style>
          .stApp {{
-             background-image: url("https://png.pngtree.com/background/20210709/original/pngtree-black-gold-border-minimalistic-background-picture-image_952105.jpg");
+             background-image: url("https://t4.ftcdn.net/jpg/02/95/44/01/360_F_295440125_BZ9c8sWssOHp13AbB1rx9vGkQalEy1nz.jpg");
              background-size: 100% 100%;
              background-attachment: fixed;  /* Ensures the background doesn't scroll */
          }}
@@ -21,6 +21,67 @@ def add_bg_from_url():
     )
 
 add_bg_from_url()
+
+
+
+
+
+
+import streamlit as st
+
+# Banner
+st.markdown("# Revolutionizing Disease Prediction with Advanced Data Science")
+st.markdown("Bridging the gap between data-driven insights and healthcare expertise for better diagnostic support.")
+
+# Introduction
+st.markdown("## Introduction")
+st.markdown("A quick dive into how we're pushing the frontiers of preliminary diagnostics with a data-informed approach to identifying potential diseases based on symptoms.")
+
+# About
+st.markdown("## About")
+st.markdown("### Project Overview")
+st.markdown("A visionary project aimed to harness symptom data for predictive analysis, aimed at supporting healthcare professionals and patients with early diagnosis.")
+st.markdown("Utilization of a rich dataset covering a multitude of diseases and corresponding symptoms, underscoring the diverse and complex nature of disease symptomatology.")
+
+# Data Science Pipeline
+st.markdown("## Data Science Pipeline")
+st.markdown("1. **Data Acquisition:**")
+st.markdown("   - The data encompasses a comprehensive collection of symptoms and their related diseases, forming a robust foundation for the predictive model.")
+st.markdown("2. **Data Cleaning:**")
+st.markdown("   - Rigorous preprocessing steps were taken to ensure quality and consistency, involving cleaning, encoding, and transforming data for optimal model input.")
+st.markdown("3. **Data Exploration:**")
+st.markdown("   - Insightful visualizations were crafted, like the frequency distribution of symptoms and disease co-occurrence, highlighting key patterns and relationships.")
+st.markdown("4. **Feature Engineering:**")
+st.markdown("   - The process included creating new features to enhance the model's ability to learn complex patterns from the data.")
+st.markdown("5. **Modeling:**")
+st.markdown("   - A meticulous evaluation of various models was performed, with details provided on training and validation accuracies:")
+st.markdown("     - Baseline Model for reference.")
+st.markdown("     - Random Forest with a test accuracy of 89.58%.")
+st.markdown("     - Logistic Regression with notable validation accuracy.")
+st.markdown("     - KNN providing a satisfactory baseline but with room for improvement.")
+st.markdown("6. **Model Evaluation:**")
+st.markdown("   - Metrics such as accuracy, precision, and recall were adopted for a comprehensive performance assessment.")
+st.markdown("   - Detailed visualizations from the notebook, such as confusion matrices, will illustrate the models' performance clearly.")
+
+# Results
+st.markdown("## Results")
+st.markdown("### Model Findings")
+st.markdown("Emphasis on the Random Forest model which emerged as the most promising, delivering an impressive test accuracy and demonstrating robust generalization capabilities.")
+st.markdown("### Statistical Analysis")
+st.markdown("The model's ability to discern distinct patterns in symptom-disease relationships was validated through rigorous statistical analysis.")
+
+# Interactive Prediction
+st.markdown("## Interactive Prediction")
+st.markdown("### Symptom Selector")
+st.markdown("A feature enabling users to select their current symptoms from a comprehensive list and receive an instant predictive analysis.")
+st.markdown("### Model Prediction")
+st.markdown("A detailed explanation of how the Random Forest model utilizes the input symptoms to predict possible diseases, with a note on the importance of professional medical consultation for accurate diagnosis.")
+
+
+
+
+
+
 
 
 # Define a function to make probability predictions
@@ -107,10 +168,13 @@ if st.button('Predict'):
         # Filter and display only diseases with probabilities > 0.0
         filtered_results = results_df[results_df['Probability'] > 0.0]
 
+        # Sort the results by probability in descending order
+        sorted_results = filtered_results.sort_values(by='Probability', ascending=False)
+
         # Create a red-themed bar chart with transparency and percentages on top of each bar
         fig, ax = plt.subplots()
-        bars = ax.bar(filtered_results['Disease'], filtered_results['Probability'], alpha=0.5, color='red')
-        ax.set_xticklabels(filtered_results['Disease'], rotation=90, fontsize=10, color='black')
+        bars = ax.bar(sorted_results['Disease'], sorted_results['Probability'], alpha=0.5, color='red')
+        ax.set_xticklabels(sorted_results['Disease'], rotation=90, fontsize=10, color='black')
         plt.xlabel('Disease', color='white')
         plt.ylabel('Probability (%)', color='white')
         ax.yaxis.label.set_color('white')
@@ -121,11 +185,29 @@ if st.button('Predict'):
             height = bar.get_height()
             ax.annotate(f'{height:.1f}%', xy=(bar.get_x() + bar.get_width() / 2, height), ha='center', va='bottom', fontsize=5, color='white')
 
-        # Set the y-axis to show ticks from 0 to 100 with an increment of 10
-        ax.set_yticks(range(0, 101, 10))
+
 
         # Set the background color of the plot to black
         fig.patch.set_facecolor('black')
         ax.set_facecolor('black')
 
         st.pyplot(fig)
+        
+        
+# Conclusion and Future Work
+st.markdown("## Conclusion and Future Work")
+st.markdown("### Summary")
+st.markdown("A concise overview of the project's success, highlighting the Random Forest model's high accuracy and the potential of machine learning in healthcare.")
+st.markdown("### Recommendations")
+st.markdown("Advocating for the model's usage in a controlled clinical environment to complement medical expertise, with a call for continued collaboration for refinement and validation.")
+st.markdown("### Next Steps")
+st.markdown("Planned enhancements such as user interface improvements for the symptom selector and dataset expansion to encompass rarer conditions and ongoing model optimization based on user feedback and medical advancements.")
+
+# Footer
+st.markdown("## Footer")
+st.markdown("### Contact Information")
+st.markdown("Channels for reaching out for potential partnerships, contributions, or inquiries into the model and its applications.")
+st.markdown("### Legal Disclaimer")
+st.markdown("A statement clarifying that the predictions made by the model are not a substitute for professional medical diagnosis or treatment.")
+st.markdown("### Credits")
+st.markdown("Acknowledgements to the data scientists, healthcare experts, and all who contributed to the success of this project.")
