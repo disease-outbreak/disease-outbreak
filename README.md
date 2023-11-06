@@ -63,7 +63,7 @@ The primary goal of this project is to develop a predictive model that can progn
 </details>
 
 ## <a name="acquire_and_prep"></a> 
-![acquire_prep](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%209.26.19%20AM.png?raw=true)
+![acquire_prep](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%209.52.48%20AM.png?raw=true)
 [[Back to top](#top)]
 
 <details>
