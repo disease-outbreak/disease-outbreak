@@ -1,5 +1,5 @@
 <a name="top"></a>
-![name of photo](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/pd.png?raw=true)
+![name of photo](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%209.10.45%20AM.png?raw=true)
 
 ***
 -[[Project Description](#project_description)]
