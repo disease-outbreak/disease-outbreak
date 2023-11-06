@@ -2,22 +2,19 @@
 ![name of photo](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%209.10.45%20AM.png?raw=true)
 
 ***
--[[Project Description](#project_description)]
--[[Project Planning](#planning)]
--[[Key Findings](#findings)]
--[[Data Dictionary](#dictionary)]
--[[Acquire & Prep](#acquire_and_prep)]
--[[Data Exploration](#explore)]
--[[Statistical Analysis](#stats)]
--[[Modeling](#model)]
--[[Conclusion](#conclusion)]
--[[Recreate This Project](#recreate)]
--[[Meet the Team](#team)]
+[[Description](#project_description)]
+[[Planning](#planning)]
+[[Acquire & Prep](#acquire_and_prep)]
+[[Exploration](#explore)]
+[[Modeling](#model)]
+[[Conclusion](#conclusion)]
+[[Recreate](#recreate)]
+[[Meet the Team](#team)]
 ___
 
 
 ## <a name="project_description"></a>
-![desc](https://github.com/3-1-1-Codeup/project/blob/main/workbooks/caitlyn/images/read_me_take3/description.png?raw=true)
+![desc](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%209.47.31%20AM.png?raw=true)
 [[Back to top](#top)]
 
 <details>
@@ -27,7 +24,7 @@ ___
 The Disease Prognosis Project is a data-driven initiative aimed at early identification and monitoring of disease symptoms for all individuals. Leveraging data science and machine learning, we strive to improve prognosis and symptom surveillance to mitigate health risks.
 
 ### Goals
-The primary goal of this project is to develop a predictive model that can prognose a disease with high accuracy. By analyzing data acquired from the World Health Orginization related to disease symptoms in the U.S., we aim to create a reliable and user-friendly tool for individuals and public health organizations.
+The primary goal of this project is to develop a predictive model that can predict a disease with high accuracy. By analyzing data acquired from the World Health Orginization related to disease symptoms in the U.S., we aim to create a reliable and user-friendly tool for individuals and public health organizations.
 
 
     
@@ -38,19 +35,7 @@ The primary goal of this project is to develop a predictive model that can progn
     - https://sa2020.org/city-council-profiles
 
 
-***
-</details>
-    
-
-## <a name="dictionary"></a>
-![dict](https://github.com/3-1-1-Codeup/project/blob/main/workbooks/caitlyn/images/read_me_take3/dict.png?raw=true)
-
-[[Back to top](#top)]
-
-<details>
-  <summary>Click to expand!</summary>
-
-### Data Used
+### Data Dictionary
     
 | Attribute | Definition | Data Type |
 | ----- | ----- | ----- | 
@@ -77,8 +62,78 @@ The primary goal of this project is to develop a predictive model that can progn
 ***
 </details>
 
+## <a name="planning"></a> 
+![plan](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2011.14.17%20AM.png?raw=true)
+[[Back to top](#top)]
+
+<details>
+  <summary>Click to expand!</summary>
+
+### Project Outline:
+  
+- Acquisition of data:
+- Download CSV from the City of San Antonio website.
+  - https://data.sanantonio.gov/dataset/service-calls/resource/20eb6d22-7eac-425a-85c1-fdb365fd3cd7
+- Bring data into python
+  
+  
+  
+  
+  Projet Outline:
+    
+- Acquisiton of data:
+    - Download CSV from the City of San Antonio website.
+        - https://data.sanantonio.gov/dataset/service-calls/resource/20eb6d22-7eac-425a-85c1-fdb365fd3cd7 
+    - Bring data into python
+    - Run basic exploration: 
+      -.info()
+      -.describe()
+      -.isnull()
+      -.value_counts()
+      -basic univariate
+      -key takeaways
+- Prepare and clean data with python - Jupyter Labs: 
+    - Set index
+    - Drop features
+    - Handle null values
+    - Handle outliers
+    - Merge some feature values (only the ones that go with each other)
+    - Rename
+    - Create
+    - Bin to create a new categorical feature(s)
+  
+- Explore data:
+    - What are the features?
+    - What questions are we aiming to answer?
+    - Categorical or continuous values.
+    - Make visuals (at least 2 to be used in deliverables)
+        - Univariate
+        - Bivariate
+        - Multivariate
+- Run statistical analysis:
+    - At least 2.
+- Modeling:
+    - Make multiple models.
+    - Pick best model.
+    - Test Data.
+    - Conclude results.
+        
+### Hypothesis/Questions
+- Does the type of call in an area affect the level of response?
+- Does the specific location affect the response time?
+- Do category and department affect response time?
+- Is there a link to which form of reporting is responded to quickest and slowest?
+
+### Target variable
+- `level_of_delay`
+    - Made in the feature engineering step.
+        - This feature takes the number of days a case was open (open-closed) and divided it by the number of days the case was given to be resolved and calculates the percent of the allocated resolution time that was used.
+
+***
+</details>
+
 ## <a name="acquire_and_prep"></a> 
-![acquire_prep](https://github.com/3-1-1-Codeup/project/blob/main/workbooks/caitlyn/images/read_me_take3/a&p.png?raw=true)
+![acquire_prep](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%209.52.48%20AM.png?raw=true)
 [[Back to top](#top)]
 
 <details>
@@ -116,7 +171,7 @@ The primary goal of this project is to develop a predictive model that can progn
 
 
 ## <a name="explore"></a> 
-![dict](https://github.com/3-1-1-Codeup/project/blob/main/workbooks/caitlyn/images/read_me_take3/explore.png?raw=true)
+![dict](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%209.58.00%20AM.png?raw=true)
 [[Back to top](#top)]
 
 <details>
@@ -130,16 +185,6 @@ The primary goal of this project is to develop a predictive model that can progn
 - Animal Services usually only gave a day to complete a case and those cases usually took months to close.
 - Winter months tend to have the longest average days open time, while Autumn months have the shortest.
 
-
-***
-
-</details>    
-
-## <a name="stats"></a> 
-![stats](https://github.com/3-1-1-Codeup/project/blob/main/workbooks/caitlyn/images/read_me_take3/stats.png?raw=true)
-[[Back to top](#top)]
-<details>
-  <summary>Click to expand!</summary>
 
 ### Stats Test 1:
   
@@ -218,7 +263,7 @@ The primary goal of this project is to develop a predictive model that can progn
 </details>    
 
 ## <a name="model"></a> 
-![model](https://github.com/3-1-1-Codeup/project/blob/main/workbooks/caitlyn/images/read_me_take3/model.png?raw=true)
+![model](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2010.27.47%20AM.png?raw=true)
 [[Back to top](#top)]
 <details>
   <summary>Click to expand!</summary>
@@ -268,7 +313,7 @@ Summary of modeling choices...
 </details>  
 
 ## <a name="conclusion"></a> 
-![conclusion](https://github.com/3-1-1-Codeup/project/blob/main/workbooks/caitlyn/images/read_me_take3/conclusion.png?raw=true)
+![conclusion](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2010.00.09%20AM.png?raw=true)
 [[Back to top](#top)]
 <details>
   <summary>Click to expand!</summary>
@@ -304,8 +349,8 @@ Summary of modeling choices...
 </details>  
 
 
-## <a name="Recreate This Project"></a> 
-![recreate](https://github.com/3-1-1-Codeup/project/blob/main/workbooks/caitlyn/images/read_me_take3/recreate.png?raw=true)
+## <a name="recreate"></a> 
+![recreate](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2010.53.45%20AM.png?raw=true)
 [[Back to top](#top)]
 
 <details>
@@ -325,11 +370,11 @@ Good luck I hope you enjoy your project!
 </details>
     
 ## <a name="team"></a>
-![meet](https://github.com/3-1-1-Codeup/project/blob/main/workbooks/caitlyn/images/read_me_take3/meet.png?raw=true)
+![meet](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2010.52.03%20AM.png?raw=true)
 
-A big thank you to the team that made this all possible:
+The Dream Team:
 
-![team](?raw=true)
+![team](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%201.29.42%20PM.png?raw=true)
 
 
 >>>>>>>>>>>>>>>
