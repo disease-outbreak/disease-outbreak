@@ -24,381 +24,391 @@ add_bg_from_url()
 # Create a Streamlit web app
 st.title("Disease Prediction App")
 
+
 # Input features from the user
-abdominalpain = st.checkbox("Abdominal Pain")
-abnormalmenstruation = st.checkbox("Abnormal Menstruation")
-acidity = st.checkbox("Acidity")
-acuteliverfailure = st.checkbox("Acute Liver Failure")
-alteredsensorium = st.checkbox("Altered Sensorium")
-anxiety = st.checkbox("Anxiety")
-backpain = st.checkbox("Back Pain")
-bellypain = st.checkbox("Belly Pain")
-blackheads = st.checkbox("Blackheads")
-# Checkbox for 'bladderdiscomfort'
-bladderdiscomfort = st.checkbox("Bladder Discomfort")
+col1, col2, col3 = st.columns(3)  # Create three columns
 
-# Checkbox for 'blister'
-blister = st.checkbox("Blister")
+with col1:
+    abdominalpain = st.checkbox("Abdominal Pain")
+    abnormalmenstruation = st.checkbox("Abnormal Menstruation")
+    acidity = st.checkbox("Acidity")
+    acuteliverfailure = st.checkbox("Acute Liver Failure")
+    alteredsensorium = st.checkbox("Altered Sensorium")
+    anxiety = st.checkbox("Anxiety")
+    backpain = st.checkbox("Back Pain")
+    bellypain = st.checkbox("Belly Pain")
+    blackheads = st.checkbox("Blackheads")
+    # Checkbox for 'bladderdiscomfort'
+    bladderdiscomfort = st.checkbox("Bladder Discomfort")
 
-# Checkbox for 'bloodinsputum'
-bloodinsputum = st.checkbox("Blood in Sputum")
+    # Checkbox for 'blister'
+    blister = st.checkbox("Blister")
 
-# Checkbox for 'bloodystool'
-bloodystool = st.checkbox("Bloody Stool")
+    # Checkbox for 'bloodinsputum'
+    bloodinsputum = st.checkbox("Blood in Sputum")
 
-# Checkbox for 'blurredanddistortedvision'
-blurredanddistortedvision = st.checkbox("Blurred and Distorted Vision")
+    # Checkbox for 'bloodystool'
+    bloodystool = st.checkbox("Bloody Stool")
 
-# Checkbox for 'breathlessness'
-breathlessness = st.checkbox("Breathlessness")
+    # Checkbox for 'blurredanddistortedvision'
+    blurredanddistortedvision = st.checkbox("Blurred and Distorted Vision")
 
-# Checkbox for 'brittlenails'
-brittlenails = st.checkbox("Brittle Nails")
+    # Checkbox for 'breathlessness'
+    breathlessness = st.checkbox("Breathlessness")
 
-# Checkbox for 'bruising'
-bruising = st.checkbox("Bruising")
+    # Checkbox for 'brittlenails'
+    brittlenails = st.checkbox("Brittle Nails")
 
-# Checkbox for 'burningmicturition'
-burningmicturition = st.checkbox("Burning Micturition")
+    # Checkbox for 'bruising'
+    bruising = st.checkbox("Bruising")
 
-# Checkbox for 'chestpain'
-chestpain = st.checkbox("Chest Pain")
+    # Checkbox for 'burningmicturition'
+    burningmicturition = st.checkbox("Burning Micturition")
 
-# Checkbox for 'chills'
-chills = st.checkbox("Chills")
+    # Checkbox for 'chestpain'
+    chestpain = st.checkbox("Chest Pain")
 
-# Checkbox for 'coldhandsandfeets'
-coldhandsandfeets = st.checkbox("Cold Hands and Feet")
+    # Checkbox for 'chills'
+    chills = st.checkbox("Chills")
 
-# Checkbox for 'coma'
-coma = st.checkbox("Coma")
+    # Checkbox for 'coldhandsandfeets'
+    coldhandsandfeets = st.checkbox("Cold Hands and Feet")
 
-# Checkbox for 'congestion'
-congestion = st.checkbox("Congestion")
+    # Checkbox for 'coma'
+    coma = st.checkbox("Coma")
 
-# Checkbox for 'constipation'
-constipation = st.checkbox("Constipation")
+    # Checkbox for 'congestion'
+    congestion = st.checkbox("Congestion")
 
-# Checkbox for 'continuousfeelofurine'
-continuousfeelofurine = st.checkbox("Continuous Feel of Urine")
+    # Checkbox for 'constipation'
+    constipation = st.checkbox("Constipation")
 
-# Checkbox for 'continuoussneezing'
-continuoussneezing = st.checkbox("Continuous Sneezing")
+    # Checkbox for 'continuousfeelofurine'
+    continuousfeelofurine = st.checkbox("Continuous Feel of Urine")
 
-# Checkbox for 'cough'
-cough = st.checkbox("Cough")
+    # Checkbox for 'continuoussneezing'
+    continuoussneezing = st.checkbox("Continuous Sneezing")
 
-# Checkbox for 'cramps'
-cramps = st.checkbox("Cramps")
+    # Checkbox for 'cough'
+    cough = st.checkbox("Cough")
 
-# Checkbox for 'darkurine'
-darkurine = st.checkbox("Dark Urine")
+    # Checkbox for 'cramps'
+    cramps = st.checkbox("Cramps")
 
-# Checkbox for 'dehydration'
-dehydration = st.checkbox("Dehydration")
+    # Checkbox for 'darkurine'
+    darkurine = st.checkbox("Dark Urine")
 
-# Checkbox for 'depression'
-depression = st.checkbox("Depression")
+    # Checkbox for 'dehydration'
+    dehydration = st.checkbox("Dehydration")
 
-# Checkbox for 'diarrhoea'
-diarrhoea = st.checkbox("Diarrhoea")
+    # Checkbox for 'depression'
+    depression = st.checkbox("Depression")
 
-# Checkbox for 'dischromic patches'
-dischromic_patches = st.checkbox("Dischromic Patches")
+    # Checkbox for 'diarrhoea'
+    diarrhoea = st.checkbox("Diarrhoea")
 
-# Checkbox for 'distentionofabdomen'
-distentionofabdomen = st.checkbox("Distention of Abdomen")
+    # Checkbox for 'dischromic patches'
+    dischromic_patches = st.checkbox("Dischromic Patches")
 
-# Checkbox for 'dizziness'
-dizziness = st.checkbox("Dizziness")
+    # Checkbox for 'distentionofabdomen'
+    distentionofabdomen = st.checkbox("Distention of Abdomen")
 
-# Checkbox for 'dryingandtinglinglips'
-dryingandtinglinglips = st.checkbox("Drying and Tingling Lips")
+    # Checkbox for 'dizziness'
+    dizziness = st.checkbox("Dizziness")
 
-# Checkbox for 'enlargedthyroid'
-enlargedthyroid = st.checkbox("Enlarged Thyroid")
+    # Checkbox for 'dryingandtinglinglips'
+    dryingandtinglinglips = st.checkbox("Drying and Tingling Lips")
 
-# Checkbox for 'excessivehunger'
-excessivehunger = st.checkbox("Excessive Hunger")
+    # Checkbox for 'enlargedthyroid'
+    enlargedthyroid = st.checkbox("Enlarged Thyroid")
 
-# Checkbox for 'extramaritalcontacts'
-extramaritalcontacts = st.checkbox("Extramarital Contacts")
+    # Checkbox for 'excessivehunger'
+    excessivehunger = st.checkbox("Excessive Hunger")
 
-# Checkbox for 'familyhistory'
-familyhistory = st.checkbox("Family History")
+    # Checkbox for 'extramaritalcontacts'
+    extramaritalcontacts = st.checkbox("Extramarital Contacts")
 
-# Checkbox for 'fastheartrate'
-fastheartrate = st.checkbox("Fast Heart Rate")
+    # Checkbox for 'familyhistory'
+    familyhistory = st.checkbox("Family History")
 
-# Checkbox for 'fatigue'
-fatigue = st.checkbox("Fatigue")
+    # Checkbox for 'fastheartrate'
+    fastheartrate = st.checkbox("Fast Heart Rate")
 
-# Checkbox for 'fluidoverload'
-fluidoverload = st.checkbox("Fluid Overload")
+with col2:
+    # Checkbox for 'fatigue'
+    fatigue = st.checkbox("Fatigue")
 
-# Checkbox for 'foulsmellof urine'
-foulsmellof_urine = st.checkbox("Foul Smell of Urine")
+    # Checkbox for 'fluidoverload'
+    fluidoverload = st.checkbox("Fluid Overload")
 
-# Checkbox for 'headache'
-headache = st.checkbox("Headache")
+    # Checkbox for 'foulsmellof urine'
+    foulsmellof_urine = st.checkbox("Foul Smell of Urine")
 
-# Checkbox for 'highfever'
-highfever = st.checkbox("High Fever")
+    # Checkbox for 'headache'
+    headache = st.checkbox("Headache")
 
-# Checkbox for 'hipjointpain'
-hipjointpain = st.checkbox("Hip Joint Pain")
+    # Checkbox for 'highfever'
+    highfever = st.checkbox("High Fever")
 
-# Checkbox for 'historyofalcoholconsumption'
-historyofalcoholconsumption = st.checkbox("History of Alcohol Consumption")
+    # Checkbox for 'hipjointpain'
+    hipjointpain = st.checkbox("Hip Joint Pain")
 
-# Checkbox for 'increasedappetite'
-increasedappetite = st.checkbox("Increased Appetite")
+    # Checkbox for 'historyofalcoholconsumption'
+    historyofalcoholconsumption = st.checkbox("History of Alcohol Consumption")
 
-# Checkbox for 'indigestion'
-indigestion = st.checkbox("Indigestion")
+    # Checkbox for 'increasedappetite'
+    increasedappetite = st.checkbox("Increased Appetite")
 
-# Checkbox for 'inflammatorynails'
-inflammatorynails = st.checkbox("Inflammatory Nails")
+    # Checkbox for 'indigestion'
+    indigestion = st.checkbox("Indigestion")
 
-# Checkbox for 'internalitching'
-internalitching = st.checkbox("Internal Itching")
+    # Checkbox for 'inflammatorynails'
+    inflammatorynails = st.checkbox("Inflammatory Nails")
 
-# Checkbox for 'irregularsugarlevel'
-irregularsugarlevel = st.checkbox("Irregular Sugar Level")
+    # Checkbox for 'internalitching'
+    internalitching = st.checkbox("Internal Itching")
 
-# Checkbox for 'irritability'
-irritability = st.checkbox("Irritability")
+    # Checkbox for 'irregularsugarlevel'
+    irregularsugarlevel = st.checkbox("Irregular Sugar Level")
 
-# Checkbox for 'irritationinanus'
-irritationinanus = st.checkbox("Irritation in Anus")
+    # Checkbox for 'irritability'
+    irritability = st.checkbox("Irritability")
 
-# Checkbox for 'itching'
-itching = st.checkbox("Itching")
+    # Checkbox for 'irritationinanus'
+    irritationinanus = st.checkbox("Irritation in Anus")
 
-# Checkbox for 'jointpain'
-jointpain = st.checkbox("Joint Pain")
+    # Checkbox for 'itching'
+    itching = st.checkbox("Itching")
 
-# Checkbox for 'kneepain'
-kneepain = st.checkbox("Knee Pain")
+    # Checkbox for 'jointpain'
+    jointpain = st.checkbox("Joint Pain")
 
-# Checkbox for 'lackofconcentration'
-lackofconcentration = st.checkbox("Lack of Concentration")
+    # Checkbox for 'kneepain'
+    kneepain = st.checkbox("Knee Pain")
 
-# Checkbox for 'lethargy'
-lethargy = st.checkbox("Lethargy")
+    # Checkbox for 'lackofconcentration'
+    lackofconcentration = st.checkbox("Lack of Concentration")
 
-# Checkbox for 'lossofappetite'
-lossofappetite = st.checkbox("Loss of Appetite")
+    # Checkbox for 'lethargy'
+    lethargy = st.checkbox("Lethargy")
 
-# Checkbox for 'lossofbalance'
-lossofbalance = st.checkbox("Loss of Balance")
+    # Checkbox for 'lossofappetite'
+    lossofappetite = st.checkbox("Loss of Appetite")
 
-# Checkbox for 'lossofsmell'
-lossofsmell = st.checkbox("Loss of Smell")
+    # Checkbox for 'lossofbalance'
+    lossofbalance = st.checkbox("Loss of Balance")
 
-# Checkbox for 'malaise'
-malaise = st.checkbox("Malaise")
+    # Checkbox for 'lossofsmell'
+    lossofsmell = st.checkbox("Loss of Smell")
 
-# Checkbox for 'mildfever'
-mildfever = st.checkbox("Mild Fever")
+    # Checkbox for 'malaise'
+    malaise = st.checkbox("Malaise")
 
-# Checkbox for 'moodswings'
-moodswings = st.checkbox("Mood Swings")
+    # Checkbox for 'mildfever'
+    mildfever = st.checkbox("Mild Fever")
 
-# Checkbox for 'movementstiffness'
-movementstiffness = st.checkbox("Movement Stiffness")
+    # Checkbox for 'moodswings'
+    moodswings = st.checkbox("Mood Swings")
 
-# Checkbox for 'mucoidsputum'
-mucoidsputum = st.checkbox("Mucoid Sputum")
+    # Checkbox for 'movementstiffness'
+    movementstiffness = st.checkbox("Movement Stiffness")
 
-# Checkbox for 'musclepain'
-musclepain = st.checkbox("Muscle Pain")
+    # Checkbox for 'mucoidsputum'
+    mucoidsputum = st.checkbox("Mucoid Sputum")
 
-# Checkbox for 'musclewasting'
-musclewasting = st.checkbox("Muscle Wasting")
+    # Checkbox for 'musclepain'
+    musclepain = st.checkbox("Muscle Pain")
 
-# Checkbox for 'muscleweakness'
-muscleweakness = st.checkbox("Muscle Weakness")
+    # Checkbox for 'musclewasting'
+    musclewasting = st.checkbox("Muscle Wasting")
 
-# Checkbox for 'nausea'
-nausea = st.checkbox("Nausea")
+    # Checkbox for 'muscleweakness'
+    muscleweakness = st.checkbox("Muscle Weakness")
 
-# Checkbox for 'neckpain'
-neckpain = st.checkbox("Neck Pain")
+    # Checkbox for 'nausea'
+    nausea = st.checkbox("Nausea")
 
-# Checkbox for 'nodalskineruptions'
-nodalskineruptions = st.checkbox("Nodal Skin Eruptions")
+    # Checkbox for 'neckpain'
+    neckpain = st.checkbox("Neck Pain")
 
-# Checkbox for 'obesity'
-obesity = st.checkbox("Obesity")
+    # Checkbox for 'nodalskineruptions'
+    nodalskineruptions = st.checkbox("Nodal Skin Eruptions")
 
-# Checkbox for 'painbehindtheeyes'
-painbehindtheeyes = st.checkbox("Pain Behind the Eyes")
+    # Checkbox for 'obesity'
+    obesity = st.checkbox("Obesity")
 
-# Checkbox for 'painduringbowelmovements'
-painduringbowelmovements = st.checkbox("Pain During Bowel Movements")
+    # Checkbox for 'painbehindtheeyes'
+    painbehindtheeyes = st.checkbox("Pain Behind the Eyes")
 
-# Checkbox for 'painfulwalking'
-painfulwalking = st.checkbox("Painful Walking")
+    # Checkbox for 'painduringbowelmovements'
+    painduringbowelmovements = st.checkbox("Pain During Bowel Movements")
 
-# Checkbox for 'paininanalregion'
-paininanalregion = st.checkbox("Pain in Anal Region")
+    # Checkbox for 'painfulwalking'
+    painfulwalking = st.checkbox("Painful Walking")
 
-# Checkbox for 'palpitations'
-palpitations = st.checkbox("Palpitations")
+    # Checkbox for 'paininanalregion'
+    paininanalregion = st.checkbox("Pain in Anal Region")
 
-# Checkbox for 'passageofgases'
-passageofgases = st.checkbox("Passage of Gases")
+    # Checkbox for 'palpitations'
+    palpitations = st.checkbox("Palpitations")
 
-# Checkbox for 'patchesinthroat'
-patchesinthroat = st.checkbox("Patches in Throat")
+    # Checkbox for 'passageofgases'
+    passageofgases = st.checkbox("Passage of Gases")
 
-# Checkbox for 'phlegm'
-phlegm = st.checkbox("Phlegm")
+    # Checkbox for 'patchesinthroat'
+    patchesinthroat = st.checkbox("Patches in Throat")
 
-# Checkbox for 'polyuria'
-polyuria = st.checkbox("Polyuria")
+    # Checkbox for 'phlegm'
+    phlegm = st.checkbox("Phlegm")
 
-# Checkbox for 'prominentveinsoncalf'
-prominentveinsoncalf = st.checkbox("Prominent Veins on Calf")
+    # Checkbox for 'polyuria'
+    polyuria = st.checkbox("Polyuria")
 
-# Checkbox for 'puffyfaceandeyes'
-puffyfaceandeyes = st.checkbox("Puffy Face and Eyes")
+    # Checkbox for 'prominentveinsoncalf'
+    prominentveinsoncalf = st.checkbox("Prominent Veins on Calf")
 
-# Checkbox for 'pusfilledpimples'
-pusfilledpimples = st.checkbox("Pus-Filled Pimples")
+    # Checkbox for 'puffyfaceandeyes'
+    puffyfaceandeyes = st.checkbox("Puffy Face and Eyes")
 
-# Checkbox for 'receivingbloodtransfusion'
-receivingbloodtransfusion = st.checkbox("Receiving Blood Transfusion")
+    # Checkbox for 'pusfilledpimples'
+    pusfilledpimples = st.checkbox("Pus-Filled Pimples")
 
-# Checkbox for 'receivingunsterileinjections'
-receivingunsterileinjections = st.checkbox("Receiving Unsterile Injections")
+    # Checkbox for 'receivingbloodtransfusion'
+    receivingbloodtransfusion = st.checkbox("Receiving Blood Transfusion")
 
-# Checkbox for 'rednessofeyes'
-rednessofeyes = st.checkbox("Redness of Eyes")
+    # Checkbox for 'receivingunsterileinjections'
+    receivingunsterileinjections = st.checkbox("Receiving Unsterile Injections")
 
-# Checkbox for 'redsorearoundnose'
-redsorearoundnose = st.checkbox("Red Sore Around Nose")
+    # Checkbox for 'rednessofeyes'
+    rednessofeyes = st.checkbox("Redness of Eyes")
 
-# Checkbox for 'redspotsoverbody'
-redspotsoverbody = st.checkbox("Red Spots Over Body")
+    # Checkbox for 'redsorearoundnose'
+    redsorearoundnose = st.checkbox("Red Sore Around Nose")
 
-# Checkbox for 'restlessness'
-restlessness = st.checkbox("Restlessness")
+    # Checkbox for 'redspotsoverbody'
+    redspotsoverbody = st.checkbox("Red Spots Over Body")
 
-# Checkbox for 'runnynose'
-runnynose = st.checkbox("Runny Nose")
+    # Checkbox for 'restlessness'
+    restlessness = st.checkbox("Restlessness")
 
-# Checkbox for 'rustysputum'
-rustysputum = st.checkbox("Rusty Sputum")
+    # Checkbox for 'runnynose'
+    runnynose = st.checkbox("Runny Nose")
 
-# Checkbox for 'scurring'
-scurring = st.checkbox("Scurring")
+    # Checkbox for 'rustysputum'
+    rustysputum = st.checkbox("Rusty Sputum")
 
-# Checkbox for 'shivering'
-shivering = st.checkbox("Shivering")
+    # Checkbox for 'scurring'
+    scurring = st.checkbox("Scurring")
 
-# Checkbox for 'silverlikedusting'
-silverlikedusting = st.checkbox("Silver-Like Dusting")
+    # Checkbox for 'shivering'
+    shivering = st.checkbox("Shivering")
 
-# Checkbox for 'sinuspressure'
-sinuspressure = st.checkbox("Sinus Pressure")
+    # Checkbox for 'silverlikedusting'
+    silverlikedusting = st.checkbox("Silver-Like Dusting")
 
-# Checkbox for 'skinpeeling'
-skinpeeling = st.checkbox("Skin Peeling")
+    # Checkbox for 'sinuspressure'
+    sinuspressure = st.checkbox("Sinus Pressure")
 
-# Checkbox for 'skinrash'
-skinrash = st.checkbox("Skin Rash")
+    # Checkbox for 'skinpeeling'
+    skinpeeling = st.checkbox("Skin Peeling")
 
-# Checkbox for 'slurredspeech'
-slurredspeech = st.checkbox("Slurred Speech")
+    
+    
+    
+with col3:
 
-# Checkbox for 'smalldentsinnails'
-smalldentsinnails = st.checkbox("Small Dents in Nails")
+    # Checkbox for 'skinrash'
+    skinrash = st.checkbox("Skin Rash")
 
-# Checkbox for 'spinningmovements'
-spinningmovements = st.checkbox("Spinning Movements")
+    # Checkbox for 'slurredspeech'
+    slurredspeech = st.checkbox("Slurred Speech")
 
-# Checkbox for 'spotting urination'
-spotting_urination = st.checkbox("Spotting Urination")
+    # Checkbox for 'smalldentsinnails'
+    smalldentsinnails = st.checkbox("Small Dents in Nails")
 
-# Checkbox for 'stiffneck'
-stiffneck = st.checkbox("Stiff Neck")
+    # Checkbox for 'spinningmovements'
+    spinningmovements = st.checkbox("Spinning Movements")
 
-# Checkbox for 'stomachbleeding'
-stomachbleeding = st.checkbox("Stomach Bleeding")
+    # Checkbox for 'spotting urination'
+    spotting_urination = st.checkbox("Spotting Urination")
 
-# Checkbox for 'stomachpain'
-stomachpain = st.checkbox("Stomach Pain")
+    # Checkbox for 'stiffneck'
+    stiffneck = st.checkbox("Stiff Neck")
 
-# Checkbox for 'sunkeneyes'
-sunkeneyes = st.checkbox("Sunken Eyes")
+    # Checkbox for 'stomachbleeding'
+    stomachbleeding = st.checkbox("Stomach Bleeding")
 
-# Checkbox for 'sweating'
-sweating = st.checkbox("Sweating")
+    # Checkbox for 'stomachpain'
+    stomachpain = st.checkbox("Stomach Pain")
 
-# Checkbox for 'swelledlymphnodes'
-swelledlymphnodes = st.checkbox("Swelled Lymph Nodes")
+    # Checkbox for 'sunkeneyes'
+    sunkeneyes = st.checkbox("Sunken Eyes")
 
-# Checkbox for 'swellingjoints'
-swellingjoints = st.checkbox("Swelling Joints")
+    # Checkbox for 'sweating'
+    sweating = st.checkbox("Sweating")
 
-# Checkbox for 'swellingofstomach'
-swellingofstomach = st.checkbox("Swelling of Stomach")
+    # Checkbox for 'swelledlymphnodes'
+    swelledlymphnodes = st.checkbox("Swelled Lymph Nodes")
 
-# Checkbox for 'swollenbloodvessels'
-swollenbloodvessels = st.checkbox("Swollen Blood Vessels")
+    # Checkbox for 'swellingjoints'
+    swellingjoints = st.checkbox("Swelling Joints")
 
-# Checkbox for 'swollenextremeties'
-swollenextremeties = st.checkbox("Swollen Extremities")
+    # Checkbox for 'swellingofstomach'
+    swellingofstomach = st.checkbox("Swelling of Stomach")
 
-# Checkbox for 'swollenlegs'
-swollenlegs = st.checkbox("Swollen Legs")
+    # Checkbox for 'swollenbloodvessels'
+    swollenbloodvessels = st.checkbox("Swollen Blood Vessels")
 
-# Checkbox for 'throatirritation'
-throatirritation = st.checkbox("Throat Irritation")
+    # Checkbox for 'swollenextremeties'
+    swollenextremeties = st.checkbox("Swollen Extremities")
 
-# Checkbox for 'toxiclook(typhos)'
-toxiclook_typhos = st.checkbox("Toxic Look (Typhos)")
+    # Checkbox for 'swollenlegs'
+    swollenlegs = st.checkbox("Swollen Legs")
 
-# Checkbox for 'ulcersontongue'
-ulcersontongue = st.checkbox("Ulcers on Tongue")
+    # Checkbox for 'throatirritation'
+    throatirritation = st.checkbox("Throat Irritation")
 
-# Checkbox for 'unsteadiness'
-unsteadiness = st.checkbox("Unsteadiness")
+    # Checkbox for 'toxiclook(typhos)'
+    toxiclook_typhos = st.checkbox("Toxic Look (Typhos)")
 
-# Checkbox for 'visualdisturbances'
-visualdisturbances = st.checkbox("Visual Disturbances")
+    # Checkbox for 'ulcersontongue'
+    ulcersontongue = st.checkbox("Ulcers on Tongue")
 
-# Checkbox for 'vomiting'
-vomiting = st.checkbox("Vomiting")
+    # Checkbox for 'unsteadiness'
+    unsteadiness = st.checkbox("Unsteadiness")
 
-# Checkbox for 'wateringfromeyes'
-wateringfromeyes = st.checkbox("Watering from Eyes")
+    # Checkbox for 'visualdisturbances'
+    visualdisturbances = st.checkbox("Visual Disturbances")
 
-# Checkbox for 'weaknessinlimbs'
-weaknessinlimbs = st.checkbox("Weakness in Limbs")
+    # Checkbox for 'vomiting'
+    vomiting = st.checkbox("Vomiting")
 
-# Checkbox for 'weaknessofonebodyside'
-weaknessofonebodyside = st.checkbox("Weakness of One Body Side")
+    # Checkbox for 'wateringfromeyes'
+    wateringfromeyes = st.checkbox("Watering from Eyes")
 
-# Checkbox for 'weightgain'
-weightgain = st.checkbox("Weight Gain")
+    # Checkbox for 'weaknessinlimbs'
+    weaknessinlimbs = st.checkbox("Weakness in Limbs")
 
-# Checkbox for 'weightloss'
-weightloss = st.checkbox("Weight Loss")
+    # Checkbox for 'weaknessofonebodyside'
+    weaknessofonebodyside = st.checkbox("Weakness of One Body Side")
 
-# Checkbox for 'yellowcrustooze'
-yellowcrustooze = st.checkbox("Yellow Crust Ooze")
+    # Checkbox for 'weightgain'
+    weightgain = st.checkbox("Weight Gain")
 
-# Checkbox for 'yellowingofeyes'
-yellowingofeyes = st.checkbox("Yellowing of Eyes")
+    # Checkbox for 'weightloss'
+    weightloss = st.checkbox("Weight Loss")
 
-# Checkbox for 'yellowishskin'
-yellowishskin = st.checkbox("Yellowish Skin")
+    # Checkbox for 'yellowcrustooze'
+    yellowcrustooze = st.checkbox("Yellow Crust Ooze")
 
-# Checkbox for 'yellowurine'
-yellowurine = st.checkbox("Yellow Urine")
+    # Checkbox for 'yellowingofeyes'
+    yellowingofeyes = st.checkbox("Yellowing of Eyes")
+
+    # Checkbox for 'yellowishskin'
+    yellowishskin = st.checkbox("Yellowish Skin")
+
+    # Checkbox for 'yellowurine'
+    yellowurine = st.checkbox("Yellow Urine")
 
 
 # Create a DataFrame from the user inputs
