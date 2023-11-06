@@ -193,7 +193,7 @@ The primary goal of this project is to develop a predictive model that can progn
 </details>    
 
 ## <a name="model"></a> 
-![model](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%209.28.00%20AM.png?raw=true)
+![model](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2010.27.47%20AM.png?raw=true)
 [[Back to top](#top)]
 <details>
   <summary>Click to expand!</summary>
@@ -243,7 +243,7 @@ Summary of modeling choices...
 </details>  
 
 ## <a name="conclusion"></a> 
-![conclusion](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%209.28.46%20AM.png?raw=true)
+![conclusion](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2010.00.09%20AM.png?raw=true)
 [[Back to top](#top)]
 <details>
   <summary>Click to expand!</summary>
@@ -280,7 +280,7 @@ Summary of modeling choices...
 
 
 ## <a name="Recreate This Project"></a> 
-![recreate](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%209.29.32%20AM.png?raw=true)
+![recreate](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2010.31.40%20AM.png?raw=true)
 [[Back to top](#top)]
 
 <details>
@@ -300,7 +300,7 @@ Good luck I hope you enjoy your project!
 </details>
     
 ## <a name="team"></a>
-![meet](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%209.30.23%20AM.png?raw=true)
+![meet](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-06%20at%2010.45.38%20AM.png?raw=true)
 
 A big thank you to the team that made this all possible:
 
