@@ -146,7 +146,7 @@ def correct_column_names(df_final, df1, missing_in_df1, missing_in_df_final):
 
 
 
-def stratified_data_split(df, test_size=0.2, validation_size=0.2, random_state=42):
+def stratified_data_split(combined_disease_df, test_size=0.2, validation_size=0.2, random_state=42):
     """
     Split the data into training, validation, and test sets using stratification.
     
@@ -159,6 +159,7 @@ def stratified_data_split(df, test_size=0.2, validation_size=0.2, random_state=4
     Returns:
     - tuple: (train, val, test) DataFrames.
     """
+    df = combined_disease_df.groupby('disease').filter(lambda x: len(x) > 1)
     
     # Calculate intermediate test size for correct proportions
     intermediate_test_size = test_size / (test_size + validation_size)
