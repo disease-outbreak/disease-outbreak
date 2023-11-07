@@ -193,10 +193,9 @@ def plot_top_n_bi_grams(bi_gram_counts, n=10):
 
     # Visualization of Top N Bi-grams
     plt.figure(figsize=(10, 5))
-    plt.bar(['_'.join(bg) for bg in top_n_bi_grams.keys()], top_n_bi_grams.values())
+    plt.barh(['_'.join(bg) for bg in top_n_bi_grams.keys()], top_n_bi_grams.values())
     plt.xlabel('Bi-grams')
     plt.ylabel('Frequency')
-    plt.xticks(rotation=45)
     plt.title(f'Top {n} Bi-gram Frequencies')
     plt.tight_layout()
     plt.show()

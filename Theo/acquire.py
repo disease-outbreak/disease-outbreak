@@ -39,7 +39,6 @@ def scrape_disease_symptoms(url):
     csv_filename = 'disease_symptoms.csv'
     # Check if the CSV file already exists
     if os.path.exists(csv_filename):
-        print(f"{csv_filename} exists. Loading the data from CSV file.")
         return pd.read_csv(csv_filename)
 
     # Send a GET request to the webpage
