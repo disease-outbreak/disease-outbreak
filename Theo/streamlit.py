@@ -4,7 +4,7 @@ import joblib
 import matplotlib.pyplot as plt
 
 # Load the saved Random Forest classifier
-loaded_model = joblib.load('rf_model.joblib')
+loaded_model = joblib.load('rf_model.sav')
 
 def add_bg_from_url():
     st.markdown(
@@ -301,3 +301,18 @@ st.markdown("### Legal Disclaimer")
 st.markdown("A statement clarifying that the predictions made by the model are not a substitute for professional medical diagnosis or treatment.")
 st.markdown("### Credits")
 st.markdown("Acknowledgements to the data scientists, healthcare experts, and instructors at CodeUp LLC who contributed to the success of this project.")
+
+
+# List of LinkedIn profiles
+linkedin_profiles = [
+    "https://www.linkedin.com/in/thoai-hung-nguyen/",
+    "https://www.linkedin.com/in/theodore-quansah/",
+    "https://www.linkedin.com/in/nishabista/",
+    "https://www.linkedin.com/in/marcelino-salazar/"
+]
+
+# Display LinkedIn profiles as clickable links
+st.markdown("### LinkedIn Profiles")
+for profile in linkedin_profiles:
+    st.markdown(f"[{profile}]({profile})")
+
