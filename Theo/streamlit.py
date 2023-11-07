@@ -95,23 +95,56 @@ st.markdown("A detailed explanation of how the Random Forest model utilizes the 
 
 
 
-# Define the function to encode disease names if needed
 def encode_disease(index):
     disease_names = [
-        'Migraine', 'Hepatitis C', 'Impetigo', 'Pneumonia', 'Peptic ulcer disease',
-        'Drug Reaction', 'Hypothyroidism', 'Gastroenteritis', 'Tuberculosis', 'Psoriasis',
-        'Varicose veins', 'Chronic cholestasis', 'Hepatitis B', 'Hepatitis D', 'Typhoid',
-        'Hypoglycemia', 'Alcoholic hepatitis', 'GERD', 'Paralysis (brain hemorrhage)', 'Arthritis',
-        'Cervical spondylosis', 'Jaundice', 'Urinary tract infection', 'Bronchial Asthma', 'Osteoarthristis',
-        'Malaria', 'Heart attack', 'Hepatitis E', 'Common Cold', 'Allergy', 'AIDS', 'Diabetes',
-        'Chicken pox', 'Fungal infection', '(Vertigo) Paroxysmal Positional Vertigo', 'Hyperthyroidism',
-        'Acne', 'Dengue', 'Hypertension', 'Dimorphic hemorrhoids (piles)', 'Hepatitis A'
+        'Fungal infection',
+        'Allergy',
+        'GERD',
+        'Chronic cholestasis',
+        'Drug Reaction',
+        'Peptic ulcer diseae',
+        'AIDS',
+        'Diabetes',
+        'Gastroenteritis',
+        'Bronchial Asthma',
+        'Hypertension',
+        'Migraine',
+        'Cervical spondylosis',
+        'Paralysis (brain hemorrhage)',
+        'Jaundice',
+        'Malaria',
+        'Chicken pox',
+        'Dengue',
+        'Typhoid',
+        'Hepatitis A',
+        'Hepatitis B',
+        'Hepatitis C',
+        'Hepatitis D',
+        'Hepatitis E',
+        'Alcoholic hepatitis',
+        'Tuberculosis',
+        'Common Cold',
+        'Pneumonia',
+        'Dimorphic hemmorhoids(piles)',
+        'Heart attack',
+        'Varicose veins',
+        'Hypothyroidism',
+        'Hyperthyroidism',
+        'Hypoglycemia',
+        'Osteoarthristis',
+        'Arthritis',
+        '(vertigo) Paroymsal  Positional Vertigo',
+        'Acne',
+        'Urinary tract infection',
+        'Psoriasis',
+        'Impetigo'
     ]
 
     if 0 <= index < len(disease_names):
         return disease_names[index]
     else:
         return None  # Return None for out-of-range indices
+
 
 # Streamlit app
 st.title('Disease Prediction App')
