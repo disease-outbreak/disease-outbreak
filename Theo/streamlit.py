@@ -4,7 +4,7 @@ import joblib
 import matplotlib.pyplot as plt
 
 # Load the saved Random Forest classifier
-loaded_model = joblib.load('rf_model.joblib')
+loaded_model = joblib.load('rf_model.sav')
 
 def add_bg_from_url():
     st.markdown(
