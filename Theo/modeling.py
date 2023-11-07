@@ -8,6 +8,9 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 
+import joblib  # Import joblib
+
+
 
 def encode_disease_column(train_df, val_df, test_df, column_name):
     """
@@ -257,6 +260,9 @@ def train_evaluate_random_forest_on_test(X_train, y_train, X_test, y_test, rando
     # Calculate accuracy on the test set
     test_accuracy = accuracy_score(y_test, y_pred_test)
     print(f"Test Accuracy (Random Forest): {test_accuracy:.4f}")
+    
+    #Save the trained classifier to a joblib file
+    joblib.dump(clf, 'rf_model.joblib')
 
     # Return the trained classifier and test accuracy
     return {
