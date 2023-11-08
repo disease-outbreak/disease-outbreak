@@ -4,7 +4,8 @@ from collections import Counter
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 from scipy.stats import ttest_ind
-
+import seaborn as sns
+import re
 
 def disease_symptom_correlation(df, disease, symptom, alpha=0.05):
     """
@@ -70,6 +71,13 @@ def check_correlation(df, disease, symptom, alpha=0.05):
     else:
         return f"We fail to reject the null hypothesis. '{disease}' and '{symptom}' don't have a significant correlation."
 
+    
+    
+def format_y_label(label):
+    # Replace underscores with spaces and capitalize the first letter
+    formatted_label = label.replace("_", " ").capitalize()
+    return formatted_label
+
 
 
 def plot_disease_counts(df, n=10):
@@ -85,10 +93,24 @@ def plot_disease_counts(df, n=10):
     """
     
     disease_counts = df['disease'].value_counts().head(n)
-    disease_counts.plot(kind='barh', figsize=(12, 6))
-    plt.title("Disease Count")
-    plt.ylabel("Count")
-    plt.xlabel("Disease")
+    plt.figure(figsize=(12, 6))
+    color = 'lightseagreen'
+
+    bars = disease_counts.plot(kind='barh', color=color)
+
+    plt.title("Disease Distribution")
+    plt.ylabel("")
+    plt.xlabel("")
+
+    # Add values at the end of each bar
+    for bar in bars.patches:
+        width = bar.get_width()
+        plt.text(width, bar.get_y() + bar.get_height() / 2, f'{int(width):.0f}', ha='left', va='center')
+    
+    sns.despine(left=True, bottom=True)
+    plt.tick_params(axis='y', which='both', left=False, right=False)
+    plt.tick_params(axis='x', which='both', bottom=False)
+    plt.xticks([])
     plt.show()
 
 
@@ -110,13 +132,34 @@ def plot_symptom_frequency(df, n=10):
 
     # Sum occurrences of each symptom
     symptom_counts = binary_df.sum()
+    
+    # Format the y-axis labels and store them in a list
+    formatted_labels = [format_y_label(label) for label in symptom_counts.sort_values(ascending=True).tail(n).index]
 
     # Plot the top n symptoms based on their frequency
     plt.figure(figsize=(10, 6))
-    symptom_counts.sort_values(ascending=True).tail(n).plot(kind='barh')
+    color = 'lightseagreen'
+
+    # Create the horizontal bar chart
+    bars = symptom_counts.sort_values(ascending=True).tail(n).plot(kind='barh', color=color)
+
     plt.title("Symptom Frequency")
-    plt.xlabel("Frequency")
-    plt.ylabel("Symptoms")
+    plt.xlabel("")
+    plt.ylabel("")
+
+    # Add values at the end of each bar with spaces added
+    for bar in bars.patches:
+        width = bar.get_width()
+        plt.text(width + 1, bar.get_y() + bar.get_height() / 2, f'{int(width):.0f}', ha='left', va='center')
+
+    # Set the formatted y-axis labels
+    plt.yticks(range(n), formatted_labels)
+
+    sns.despine(left=True, bottom=True)
+    plt.tick_params(axis='y', which='both', left=False, right=False)
+    plt.tick_params(axis='x', which='both', bottom=False)
+    plt.xticks([])
+
     plt.show()
 
     return symptom_counts
