@@ -157,6 +157,9 @@ selected_features = st.multiselect(
     default=[]
 )
 
+
+
+
 # Define a function to make probability predictions
 def predict_disease_probs(features):
     prediction_probs = loaded_model.predict_proba([features])
