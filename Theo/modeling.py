@@ -1,5 +1,5 @@
 import pandas as pd
-
+import matplotlib.pyplot as plt
 from sklearn.utils import resample
 from sklearn.dummy import DummyClassifier
 from sklearn.metrics import accuracy_score
@@ -269,3 +269,23 @@ def train_evaluate_random_forest_on_test(X_train, y_train, X_test, y_test, rando
         'classifier': clf,
         'test_accuracy': test_accuracy
     }
+
+
+
+
+
+
+def plot_accuracy_bar_chart(baseline_accuracy, train_accuracy, val_accuracy, test_accuracy):
+    # Define the labels and accuracy values
+    labels = ['Baseline Accuracy', 'Training Accuracy', 'Validation Accuracy', 'Test Accuracy']
+    accuracy_values = [baseline_accuracy, train_accuracy, val_accuracy, test_accuracy]
+
+    # Create a bar chart
+    plt.figure(figsize=(8, 6))
+    plt.bar(labels, accuracy_values, color=['blue', 'green', 'red', 'purple'])
+    plt.xlabel(' ')
+    plt.ylabel('Accuracy')
+    plt.title('Baseline Accuracy, Training, Validation, Test')
+    plt.ylim(0, 1)  # Set the y-axis limit to represent accuracy (0 to 1)
+    plt.show()
+
