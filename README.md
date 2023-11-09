@@ -274,8 +274,8 @@ Interact with our model and data!
     
 ### Streamlit Application
     
-    - https://hitzuman-disease-outbreak2-codeupcapstonestreamlit-sqfsjj.streamlit.app
+    - [Streamlit app] (https://hitzuman-disease-outbreak2-codeupcapstonestreamlit-sqfsjj.streamlit.app)
     
 ### Tableau Dashboard
     
-    - https://public.tableau.com/app/profile/nisha.bista/viz/DiseaseMortality/Dashboard12?publish=yes
+    - [Dashboard] (https://public.tableau.com/app/profile/nisha.bista/viz/DiseaseMortality/Dashboard12?publish=yes)
