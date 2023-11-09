@@ -221,5 +221,5 @@ def plot_top_n_tri_grams(tri_gram_counts, n=10):
     plt.xlabel('Frequency')
     plt.ylabel('Tri-grams')
     plt.title(f'Top {n} Tri-gram Frequencies')
-    plt.tight_layout()  # This will often make labels less likely to be cut off
+    plt.tight_layout()
     plt.show()

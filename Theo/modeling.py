@@ -268,4 +268,4 @@ def train_evaluate_random_forest_on_test(X_train, y_train, X_test, y_test, rando
     return {
         'classifier': clf,
         'test_accuracy': test_accuracy
-    }
+    },clf, y_pred_test
