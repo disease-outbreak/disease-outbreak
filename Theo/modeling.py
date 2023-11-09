@@ -7,7 +7,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
-
+import seaborn as sns
 import joblib  # Import joblib
 
 
@@ -277,17 +277,27 @@ def train_evaluate_random_forest_on_test(X_train, y_train, X_test, y_test, rando
 
 
 
-def plot_accuracy_bar_chart(baseline_accuracy, train_accuracy, val_accuracy, test_accuracy):
+def plot_accuracy_bar_chart(train_accuracy, val_accuracy, test_accuracy):
     # Define the labels and accuracy values
-    labels = ['Baseline Accuracy', 'Training Accuracy', 'Validation Accuracy', 'Test Accuracy']
-    accuracy_values = [baseline_accuracy, train_accuracy, val_accuracy, test_accuracy]
+    labels = ['Training', 'Validation', 'Test']
+    accuracy_values = [train_accuracy, val_accuracy, test_accuracy]
 
     # Create a bar chart
     plt.figure(figsize=(8, 6))
-    plt.bar(labels, accuracy_values, color=['blue', 'green', 'red', 'purple'])
+    bars = plt.bar(labels, accuracy_values, color=['lightseagreen', 'lightseagreen', 'lightseagreen'])
     plt.xlabel(' ')
-    plt.ylabel('Accuracy')
-    plt.title('Baseline Accuracy, Training, Validation, Test')
+    plt.ylabel('')
+    plt.title('Accuracy Metrics')
     plt.ylim(0, 1)  # Set the y-axis limit to represent accuracy (0 to 1)
-    plt.show()
 
+    # Add values on top of each bar as percentages
+    for bar in bars:
+        height = bar.get_height()
+        plt.text(bar.get_x() + bar.get_width() / 2, height, f'{height:.0%}', ha='center', va='bottom')
+
+    sns.despine(left=True, bottom=True)
+    plt.tick_params(axis='y', which='both', left=False, right=False)
+    plt.tick_params(axis='x', which='both', bottom=False)
+    plt.yticks([])
+
+    plt.show()

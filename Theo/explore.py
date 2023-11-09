@@ -4,7 +4,8 @@ from collections import Counter
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 from scipy.stats import ttest_ind
-
+import seaborn as sns
+import re
 
 def disease_symptom_correlation(df, disease, symptom, alpha=0.05):
     """
@@ -70,6 +71,13 @@ def check_correlation(df, disease, symptom, alpha=0.05):
     else:
         return f"We fail to reject the null hypothesis. '{disease}' and '{symptom}' don't have a significant correlation."
 
+    
+    
+def format_y_label(label):
+    # Replace underscores with spaces and capitalize the first letter
+    formatted_label = label.replace("_", " ").capitalize()
+    return formatted_label
+
 
 
 def plot_disease_counts(df, n=10):
@@ -85,10 +93,24 @@ def plot_disease_counts(df, n=10):
     """
     
     disease_counts = df['disease'].value_counts().head(n)
-    disease_counts.plot(kind='barh', figsize=(12, 6))
-    plt.title("Disease Count")
-    plt.ylabel("Count")
-    plt.xlabel("Disease")
+    plt.figure(figsize=(12, 6))
+    color = 'lightseagreen'
+
+    bars = disease_counts.plot(kind='barh', color=color)
+
+    plt.title("Disease Distribution")
+    plt.ylabel("")
+    plt.xlabel("")
+
+    # Add values at the end of each bar
+    for bar in bars.patches:
+        width = bar.get_width()
+        plt.text(width, bar.get_y() + bar.get_height() / 2, f'{int(width):.0f}', ha='left', va='center')
+    
+    sns.despine(left=True, bottom=True)
+    plt.tick_params(axis='y', which='both', left=False, right=False)
+    plt.tick_params(axis='x', which='both', bottom=False)
+    plt.xticks([])
     plt.show()
 
 
@@ -110,13 +132,34 @@ def plot_symptom_frequency(df, n=10):
 
     # Sum occurrences of each symptom
     symptom_counts = binary_df.sum()
+    
+    # Format the y-axis labels and store them in a list
+    formatted_labels = [format_y_label(label) for label in symptom_counts.sort_values(ascending=True).tail(n).index]
 
     # Plot the top n symptoms based on their frequency
     plt.figure(figsize=(10, 6))
-    symptom_counts.sort_values(ascending=True).tail(n).plot(kind='barh')
+    color = 'lightseagreen'
+
+    # Create the horizontal bar chart
+    bars = symptom_counts.sort_values(ascending=True).tail(n).plot(kind='barh', color=color)
+
     plt.title("Symptom Frequency")
-    plt.xlabel("Frequency")
-    plt.ylabel("Symptoms")
+    plt.xlabel("")
+    plt.ylabel("")
+
+    # Add values at the end of each bar with spaces added
+    for bar in bars.patches:
+        width = bar.get_width()
+        plt.text(width + 1, bar.get_y() + bar.get_height() / 2, f'{int(width):.0f}', ha='left', va='center')
+
+    # Set the formatted y-axis labels
+    plt.yticks(range(n), formatted_labels)
+
+    sns.despine(left=True, bottom=True)
+    plt.tick_params(axis='y', which='both', left=False, right=False)
+    plt.tick_params(axis='x', which='both', bottom=False)
+    plt.xticks([])
+
     plt.show()
 
     return symptom_counts
@@ -214,12 +257,39 @@ def plot_top_n_tri_grams(tri_gram_counts, n=10):
 
     # Sort the tri_gram_counts dictionary by values (frequencies) in descending order and take top N
     top_n_tri_grams = dict(sorted(tri_gram_counts.items(), key=lambda item: item[1], reverse=True)[:n])
+    
+    formatted_labels = [format_y_label('_'.join(tg)) for tg in list(reversed(list(top_n_tri_grams.keys())))]
 
-    # Visualization of Top N Tri-grams
-    plt.figure(figsize=(10, 5))
-    plt.barh(['_'.join(tg) for tg in top_n_tri_grams.keys()], top_n_tri_grams.values())
-    plt.xlabel('Frequency')
-    plt.ylabel('Tri-grams')
+    # Visualization of Top N Tri-grams (sorted from biggest to smallest) from top to bottom
+    plt.figure(figsize=(10, 6))
+    bars = plt.barh(['_'.join(tg) for tg in list(reversed(list(top_n_tri_grams.keys())))],
+                   list(reversed(list(top_n_tri_grams.values()))), height = .5, color='lightseagreen')
+    plt.xlabel('')
+    plt.ylabel('')
+    # Set the formatted y-axis labels
+    plt.yticks(range(n), formatted_labels)
+    sns.despine(left=True, bottom=True)
+    plt.tick_params(axis='y', which='both', left=False, right=False)
+    plt.tick_params(axis='x', which='both', bottom=False)
+    plt.xticks([])
     plt.title(f'Top {n} Tri-gram Frequencies')
     plt.tight_layout()  # This will often make labels less likely to be cut off
+
+    # Add values at the end of each bar
+    for bar, value in zip(bars, list(reversed(list(top_n_tri_grams.values())))):
+        plt.text(value, bar.get_y() + bar.get_height() / 2, f'{value}', ha='left', va='center')
+
     plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
