@@ -259,10 +259,10 @@ def train_evaluate_random_forest_on_test(X_train, y_train, X_test, y_test, rando
     
     # Calculate accuracy on the test set
     test_accuracy = accuracy_score(y_test, y_pred_test)
-    print(f"Test Accuracy (Random Forest): {test_accuracy:.4f}")
+    print(f"Test Accuracy (Random Forest): {test_accuracy:.1f}")
     
     #Save the trained classifier to a joblib file
-    joblib.dump(clf.fit(X_train,y_train), 'rf_model.sav')
+    joblib.dump(clf.fit(X_train,y_train), 'rf_model.joblib')
 
 
     # Return the trained classifier and test accuracy
