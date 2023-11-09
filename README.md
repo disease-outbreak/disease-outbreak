@@ -270,6 +270,7 @@ The Dream Team:
 <details>
   <summary>Click to expand!</summary>
 
+
 Interact with our model and data!
     
 ### Streamlit Application
