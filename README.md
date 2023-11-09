@@ -10,6 +10,7 @@
 [[Conclusion](#conclusion)]
 [[Recreate](#recreate)]
 [[Meet the Team](#team)]
+[[Interact](#interact)]
 ___
 
 
@@ -230,7 +231,7 @@ The Random Forest model, with a test accuracy of 89.58%, was identified as the m
 - Implement a Feedback Loop: Develop a system to collect user and professional feedback on the model’s predictions to facilitate ongoing learning and improvement.
 - Focus on Interpretability: Devote efforts to make the model's decision process more transparent, aiding healthcare professionals in understanding the rationale behind predictions, which is crucial for medical applications.
 
-
+***
 </details>  
 
 
@@ -258,3 +259,23 @@ The Dream Team:
 
 >>>>>>>>>>>>>>>
 .
+
+</details>  
+
+
+## <a name="interact"></a> 
+![interact](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-09%20at%202.35.07%20PM.png?raw=true)
+[[Back to top](#top)]
+
+<details>
+  <summary>Click to expand!</summary>
+
+Interact with our model and data!
+    
+### Streamlit Application
+    
+    - https://hitzuman-disease-outbreak2-codeupcapstonestreamlit-sqfsjj.streamlit.app
+    
+### Tableau Dashboard
+    
+    - https://public.tableau.com/app/profile/nisha.bista/viz/DiseaseMortality/Dashboard12?publish=yes
