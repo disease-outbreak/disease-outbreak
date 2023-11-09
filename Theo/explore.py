@@ -78,6 +78,10 @@ def format_y_label(label):
     formatted_label = label.replace("_", " ").capitalize()
     return formatted_label
 
+def format_y_label2(label):
+    # Replace underscores with spaces and capitalize the first letter
+    formatted_label = label.replace("_", " ")
+    return formatted_label
 
 
 def plot_disease_counts(df, n=10):
@@ -258,7 +262,7 @@ def plot_top_n_tri_grams(tri_gram_counts, n=10):
     # Sort the tri_gram_counts dictionary by values (frequencies) in descending order and take top N
     top_n_tri_grams = dict(sorted(tri_gram_counts.items(), key=lambda item: item[1], reverse=True)[:n])
     
-    formatted_labels = [format_y_label('_'.join(tg)) for tg in list(reversed(list(top_n_tri_grams.keys())))]
+    formatted_labels = [format_y_label2('_'.join(tg)) for tg in list(reversed(list(top_n_tri_grams.keys())))]
 
     # Visualization of Top N Tri-grams (sorted from biggest to smallest) from top to bottom
     plt.figure(figsize=(10, 6))
