@@ -30,35 +30,14 @@ The primary goal of this project is to develop a predictive model that can predi
     
 ### Data Source
     
-- Data was gathered from "The World Health Organization" website
-    - https://data.sanantonio.gov/dataset/service-calls/resource/20eb6d22-7eac-425a-85c1-fdb365fd3cd7
+- Data was gathered from "The World Health Organization" and Columbia University website
 - Other data from the following website to create a dashboard of mortality rates.
-    - https://sa2020.org/city-council-profiles
-
 
 ### Data Dictionary
     
-| Attribute | Definition | Data Type |
-| ----- | ----- | ----- | 
-| call_reason | The department division within the City deaprtment to whom the case is assigned. | object |
-| case_status | The status of a case which is either open or closed. | object |
-| case_type | The service request type name for the issue being reported. Examples include stray animals, potholes, overgrown yards, junk vehicles, traffic signal malfunctions, etc. | object |
-| closed_date | The date and time that the case/request was was closed. If blank, the request has not been closed as of the Report Ending Date. | object |
-| council_district | The Council District number from where the issue was reported. | int64 |
-| days_before_or_after_due | How long before or after the due date were the cases closed | float64 |
-| days_open | The number of days between a case being opened and closed. | float64 |
-| dept | The City department to whom the case is assigned. | object |
-| due_date | Every service request type has a due date assigned to the request, based on the request type name. The SLA Date is the due date and time for the request type based on the service level agreement (SLA). Each service request type has a timeframe in which it is scheduled to be addressed. | object |
-| is_late | This indicates whether the case has surpassed its Service Level Agreement due date for the specific service request. | object |
-| open_date | The date and time that a case was submitted. | object |
-| open_month | Month of the year the case was made | int64 | 
-| open_week | Week of the year the case was made | int64 | 
-| open_year | The year the case was made | int64 | 
-| pct_time_of_used | How much of the resolution_days_due was the case open? | float64 | 
-| resolution_days_due | The number of days between a case being opened and due. | float64 |
-| source_id | The source id is the method of input from which the case was received. | object |
-    
-\*  Indicates the target feature in this City of San Antonio data.
+| Column | Definition | Data Type |
+| Disease | Different type of diseases patients have in our dataset | Target variable |
+| Symptoms | Different type of symptoms patients have in our dataset | object |
 
 ***
 </details>
@@ -75,25 +54,21 @@ The primary goal of this project is to develop a predictive model that can predi
 - Initial Questions:
     - How do we plan to accomplish this project based off the goal?
     - How will it be used?
-    - Formulate hypothesis
     - Where and how we will acquire data?
     - What specific features to move forward with?
-    - Read the data into python environment
-    - Save data in a file    
+    - What model will we use?   
   
-- Acquisiton of data:
-    - Download CSV from the City of San Antonio website.
-        - https://data.sanantonio.gov/dataset/service-calls/resource/20eb6d22-7eac-425a-85c1-fdb365fd3cd7 
+- Acquisiton: 
     - Read data into python
     - Summarize data
     
-- Prepare and clean data with python - Jupyter Labs: 
+- Prepare and clean: 
     - Potentially Drop features
     - Handle null values
     - Adjust data types
     - Rename columns
   
-- Explore data:
+- Exploratory analysis:
     - Ask questions about our data
     - Make a hypothesis
     - Create visuals
@@ -120,27 +95,44 @@ The primary goal of this project is to develop a predictive model that can predi
   <summary>Click to expand!</summary>
 
 ### Acquire Data:
-- Data was gathered from "The World Health Organization" website
-    - https://data.sanantonio.gov/dataset/service-calls/resource/20eb6d22-7eac-425a-85c1-fdb365fd3cd7
+- Data was gathered from The World Health Organization and Columbia University website
 - Other data from the following website to create a dashboard of mortality rates.
-    - https://sa2020.org/city-council-profiles
     
 The dataset comprises various diseases and their associated symptoms. Each disease can have multiple symptoms, and each symptom can be associated with multiple diseases
     
 - Dataset Structure
-    - Disease and symptoms:
+    - Disease and symptoms(1):
+        - Source: W.H.O.
         - Rows: 4920
         - Columns: 18
     - Symptoms and Severity:
+        - Source: W.H.O.
         - Rows: 133
         - Columns:2
+    - Disease and symptoms(2):
+        - Source: Columbia.edu
+        - Rows: 1866
+        - Columns: 3
     
 ### Prepare Data
-- Convert symptom columns to consistent data types.
-- One-hot encode each symptom column.
-- Aggregate the one-hot encoded columns to remove duplicates.
-- Construct the final dataset combining diseases and their respective symptoms.
+- Cleaned and preprocessed disease_df; result stored in processed_df.
+- Transformed symptom data in processed_df to one-hot encoding; result in encoded_df.
+- Aggregated preprocessed data and encoded symptoms into aggregated_df.
+- Identified and resolved missing symptoms between aggregated_df and severity_df.
+- Standardized and corrected column names in aggregated_df to align with severity_df.
+- Removed UMLS codes and preprocessed scraped_df for analysis readiness.
+- Eliminated duplicate columns in scraped_df to maintain data integrity.
+- Converted numerical string columns to numeric types in scraped_df, except 'Disease'.
+- Reshaped scraped_df into pivot format for enhanced analysis capability.
+- Merged scraped_df with disease_df and conducted further preprocessing.
+- Compared symptom presence between scraped_df and severity_df to spot discrepancies.
+- Aligned scraped_df column names with severity_df, addressing missing data.
+- Split combined dataset into stratified train, validation, and test sets; sizes outputted.
 
+### Split data:
+- Training set (60%)
+- Validation set (20%)
+- Test set (20%)
 ***
 
 </details>
@@ -151,35 +143,24 @@ The dataset comprises various diseases and their associated symptoms. Each disea
 
 <details>
   <summary>Click to expand!</summary>
-    
-### Split data:
-- Training set (60%)
-- Validation set (20%)
-- Test set (20%)
 
 ### Statistical Analysis of Symptoms and Conditions:
-  - A high statistical significance was found between abdominal pain and Alcoholic Hepatitis P less than .05 with a T-statistic of 21.049 and a P-value of approximately 2.996 x 10^-94, indicating a robust correlation.
-  - Vomiting showed a strong statistical association with Chronic Cholestasis, evidenced by a T-statistic of 12.975 and a P-value around 7.03 x 10^-38, also significantly surpassing the standard significance threshold.
+
+- A strong statistical relationship exists between "yellowing of the eyes" and conditions such as Hepatitis (P less than 0.05), underscored by the frequent occurrence of this symptom alongside "yellowish skin" in the tri-gram frequency analysis.
+"High fever" paired with "cough" in the tri-gram frequency chart indicates a significant correlation with respiratory conditions, highlighting the need for further clinical investigation when these symptoms are present together.
 
 ### Clinical Insights from Statistical Findings:
-  - Abdominal pain as a symptom warrants consideration for Alcoholic Hepatitis diagnosis.
-  - Vomiting is a significant indicator for Chronic Cholestasis and should be factored into diagnostic processes for this condition.
+- The presence of "yellowing of the eyes" and "yellowish skin" should prompt clinical consideration for liver-related conditions, including Hepatitis and bile duct disorders.
+The pairing of "high fever" with symptoms like "cough" and "headache" in the tri-gram analysis suggests a potential link to infectious diseases or inflammatory conditions that warrant a thorough clinical evaluation.
 
 ### Symptom Frequency Analysis:
-  - "Fever" emerged as the most common symptom, highlighting its prevalence across various diseases.
-  - Symptoms associated with respiratory issues and general malaise such as "cough," "headache," and "fatigue" are frequently reported.
-  - Liver-related symptoms like "jaundice" were noted, suggesting liver issues are represented within the dataset.
-  - Gastrointestinal symptoms such as "vomiting" and "diarrhea" are commonly reported, indicating the importance of digestive health in the dataset's scope.
+- The symptom "fatigue" tops the frequency chart, suggesting it is a ubiquitous symptom across a multitude of conditions.
+Other symptoms like "headache" and "nausea" are also prominent, indicating common issues affecting the nervous and digestive systems, respectively.
+The frequency of "abdominal pain" and "vomiting" underscores their importance as symptoms in the dataset, pointing to a range of potential gastrointestinal or systemic disorders.
 
 ### N-Gram Analysis Insights:
-  - Bi-grams such as "loss of" and "high fever" are prevalent, reflecting common symptom descriptions or pairings.
-  - Tri-grams like "loss of appetite" provide a more detailed picture of symptom patterns, with this particular tri-gram being the most frequent.
-  - The bi-gram and tri-gram visualizations reveal common co-occurring symptoms, which can aid in symptom pattern recognition and possibly hint at underlying conditions.
-
-### Overall Summary:
-  - The analysis underlines the significance of fever as a common presenting symptom, which may be of interest for broader epidemiological studies.
-  - The data underscores the importance of considering symptom patterns, such as abdominal pain and vomiting, in the clinical assessment and potential diagnosis of liver diseases.
-  - The use of bi-grams and tri-grams has proven effective in identifying common symptom pairs and clusters within the dataset, offering valuable insights for healthcare professionals to refine their diagnostic criteria and for researchers to understand symptomatology better.
+- The bi-gram "loss of appetite" is highly frequent, indicating that this symptom is often reported and may be significant in the diagnostic process of various conditions.
+The tri-gram "loss of appetite" shows how symptom combinations can provide more specific indications of health issues, possibly related to digestive health or metabolic disorders.
 
 ***   
 </details>    
@@ -190,45 +171,27 @@ The dataset comprises various diseases and their associated symptoms. Each disea
 <details>
   <summary>Click to expand!</summary>
 
-Summary of modeling choices...
-        
-### Models Made:
-- Logistic Regression
-- Decision Tree
-- Random Forest
-- KNN
-- Ridge Classifier
-- SGD Classifier
+The purpose of this modeling was to predict diseases based on the given symptoms. We evaluated several models, including Random Forest, Logistic Regression, and KNN, against a baseline model. Here's a summary of the results:
 
-### Baseline Accuracy  
-- 57.199%
-      
-| Model | Accuracy with Train | Accuracy with Validate |
-| ---- | ----| ---- | 
-| Logistic Regression | 61.1% | 61% |
-| Decision Tree | 68% | 68% |
-| Random Forest | 66.6% | 66.4% |
-| KNN | 57%  | 57% |
-| Ridge Classifier | 59% | 59% |
-| SGD Classifier | 56% | 56% |
-    
-    
-## Selecting the Best Model:
+### Baseline Model:
+- Accuracy: 0.0208
+This low accuracy is expected since the baseline model predicts diseases based on the most frequent class without any true learning.
 
-- Decision Tree
+### Random Forest:
+- Training Accuracy: 1.0000
+- Validation Accuracy: 0.9583
+- Test Accuracy: 0.8958
+The Random Forest model performed remarkably well on the training dataset, achieving perfect accuracy. This indicates that it could potentially overfit to the training data. However, its high validation accuracy demonstrates that it generalizes fairly well to unseen data. The test accuracy further validates its robustness.
 
-- Why did we choose this model?
-    - This model ran the best accross train and validate.
-    
-- What does this model do?
-    - Decision trees are flexible models that don’t increase their number of parameters as we add more features (if we build them correctly). At each node of a decision tree, one of the features of our data is evaluated in order to make an specific data point follow a certain path when making a prediction.
+### Logistic Regression:
+- Training Accuracy: 1.0000
+- Validation Accuracy: 0.9583
+Similar to the Random Forest model, the Logistic Regression model also showed perfect accuracy on the training data and impressive performance on the validation set. This suggests that the model might have identified clear linear boundaries among the features.
 
-### Model on All Data Sets
-
-| Best Model | Accuracy with Train | Accuracy with Validate | Accuracy with Test|
-| ---- | ----| ---- | ---- |
-| Decision Tree | 68% | 68% | 68% |
-
+### KNN:
+- Training Accuracy: 0.8472
+- Validation Accuracy: 0.3542
+The KNN model demonstrated satisfactory performance on the training data but showed a significant drop in accuracy on the validation set. This could imply that KNN isn't the best model for this type of data or the chosen hyperparameters are not optimal
 
 ***
 
@@ -240,32 +203,32 @@ Summary of modeling choices...
 <details>
   <summary>Click to expand!</summary>
 
-**We found....**
+The Disease Symptoms Prediction Model project aimed to leverage symptom data to predict potential diseases, assisting healthcare professionals and patients in preliminary diagnostics. This objective was approached through the development of machine learning models, utilizing a dataset encompassing a variety of diseases and their associated symptoms.
 
-- Each department is better in certain areas about being on time/early and late in others.
-- The more calls a department had the better they were at getting issues resolved on time.
-- Internal requests were generally late in comparison to other forms of reporting.
-- When an issue was reported via the app, there were no extremely late responses.
-- Customer Service generally got issues resolved late or very late. 
-- Animal Services usually only gave a day to complete a case and those cases usually took months to close.
-- Winter months tend to have the longest average days open time, while Autumn months have the shortest.
+### Achievement of Goals:
+- We successfully developed a machine learning model, with the Random Forest classifier emerging as the most accurate, significantly outperforming the baseline model.
+The relationship between symptoms and diseases was elucidated through statistical analysis, confirming that certain symptoms such as abdominal pain and vomiting are strong indicators of specific conditions like Alcoholic Hepatitis and Chronic Cholestasis, respectively.
+- A baseline model was established, providing a reference point for evaluating the effectiveness of more sophisticated predictive models.
 
-**With further time...**
+### Key Findings:
+- Statistical significance was identified between certain symptoms and diseases, validating the model's capability to capture these relationships.
+- Symptom frequency analysis and N-gram visualizations provided deeper insights into common and distinctive symptom patterns.
+The Random Forest model, with a test accuracy of 89.58%, was identified as the most promising predictive model in our trials.
 
-- Overall extremely late responses are spread out throughout the city. There is a significant delay within calls listed as on time. Therefore, we would like to evaluate the amount of time between districts for calls that were considered on time. 
-- Analyze the data further through time series analysis. Some questions that we would like to investigate are:
-    - Do days of the week effect when the case was done?
-    - Are Mondays the slowest days because of the weekend backlog?
-    - Do minor holidays affect response time?
-- Obtain census data to gain insight more into zip codes, neighborhoods, and demographics beyond just the large districts.
-- Determine priority level for each call as a feature based on the number of days given and department to explore if there is a correlation with the level of delay.
+### Recommendations:
+- Due to its high validation and test accuracies, the Random Forest model is recommended for initial deployment in a controlled environment to gauge real-world efficacy.
+- Collaboration with medical professionals is advised to interpret the model's predictions and to incorporate their feedback for refinement.
 
-**We recommend...**
-  
-- The City of San Antonio should create standardized timelines for each department to follow when solving cases.
-- Animal Care Services and Customer Service should both have a thorough review of their cases and timelines to rectify latency issues.
-- Late and extremely late cases should be investigated through all departments.
-- The classification in the raw data set for whether a case was completed late or not needs to be re-made. This is due to an issue where this feature classifies cases as being late when they were completed as late. For example if a case was due in fifteen days but was completed a day before its due date, it would be classified as late.
+### Next Steps:
+- Integration into User-Friendly Platforms: The next phase involves creating a user interface for the model, making it accessible to end-users who can report symptoms and receive disease predictions.
+- Dataset Expansion: To improve the model's comprehensiveness and accuracy, we plan to include a broader range of diseases, especially rare conditions, to enhance predictive capabilities.
+- Continuous Model Improvement: We aim to continuously refine the model by incorporating medical professional feedback and adjusting it according to the latest medical research and data.
+
+### "If I Had More Time, I Would...":
+- Explore Advanced Models: Experiment with deep learning and ensemble methods to potentially uncover complex patterns in symptom-disease relationships that simpler models might miss.
+- Conduct a Thorough Hyperparameter Tuning: Allocate more time to fine-tune the models, especially KNN, to ensure that we are not overlooking a potentially suitable model due to suboptimal parameters.
+- Implement a Feedback Loop: Develop a system to collect user and professional feedback on the model’s predictions to facilitate ongoing learning and improvement.
+- Focus on Interpretability: Devote efforts to make the model's decision process more transparent, aiding healthcare professionals in understanding the rationale behind predictions, which is crucial for medical applications.
 
 
 </details>  
@@ -279,16 +242,10 @@ Summary of modeling choices...
   <summary>Click to expand!</summary>
 
 ### 1. Getting started
-- Start by cloning the github repository on your From your terminal command line, type: 
-git clone git@github.com:3-1-1-Codeup/project.git
+- Start by cloning the github repository on the terminal, type: 
+git clone git@github.com:disease-outbreak/disease-outbreak.git
 
-- Download .CSV of Data from the link below and name it as service-calls.csv in your working directory:
-https://data.sanantonio.gov/dataset/service-calls/resource/20eb6d22-7eac-425a-85c1-fdb365fd3cd7
-
-- Use the wrangle.py, explore.py, and model.py to follow the processes we used.
-    
-Good luck I hope you enjoy your project!
-
+- Install Conda, Python, VS Code or Jupyter Notebook
 </details>
     
 ## <a name="team"></a>

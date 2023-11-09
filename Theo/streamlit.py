@@ -96,50 +96,7 @@ st.markdown("A detailed explanation of how the Random Forest model utilizes the 
 
 
 def encode_disease(index):
-    disease_names = [
-        'Fungal infection',
-        'Allergy',
-        'GERD',
-        'Chronic cholestasis',
-        'Drug Reaction',
-        'Peptic ulcer diseae',
-        'AIDS',
-        'Diabetes',
-        'Gastroenteritis',
-        'Bronchial Asthma',
-        'Hypertension',
-        'Migraine',
-        'Cervical spondylosis',
-        'Paralysis (brain hemorrhage)',
-        'Jaundice',
-        'Malaria',
-        'Chicken pox',
-        'Dengue',
-        'Typhoid',
-        'Hepatitis A',
-        'Hepatitis B',
-        'Hepatitis C',
-        'Hepatitis D',
-        'Hepatitis E',
-        'Alcoholic hepatitis',
-        'Tuberculosis',
-        'Common Cold',
-        'Pneumonia',
-        'Dimorphic hemmorhoids(piles)',
-        'Heart attack',
-        'Varicose veins',
-        'Hypothyroidism',
-        'Hyperthyroidism',
-        'Hypoglycemia',
-        'Osteoarthristis',
-        'Arthritis',
-        '(vertigo) Paroymsal  Positional Vertigo',
-        'Acne',
-        'Urinary tract infection',
-        'Psoriasis',
-        'Impetigo'
-    ]
-
+    disease_names = ["Alzheimer's disease", 'Pneumocystis carinii pneumonia', 'accident cerebrovascular', 'hiv infections', 'adenocarcinoma', 'adhesion', 'affect labile', 'anemia', 'anxiety state', 'aphasia', 'arthritis', 'asthma', 'bacteremia', 'benign prostatic hypertrophy', 'bipolar disorder', 'bronchitis', 'oral candidiasis', 'carcinoma', 'cardiomyopathy', 'cellulitis', 'cholecystitis', 'biliary calculus', 'chronic alcoholic intoxication', 'chronic kidney failure', 'chronic obstructive airway disease', 'cirrhosis', 'colitis', 'confusion', 'coronary heart disease', 'decubitus ulcer', 'deep vein thrombosis', 'degenerative polyarthritis', 'deglutition disorder', 'dehydration', 'delirium', 'delusion', 'dementia', 'dependence', 'depressive disorder', 'diabetes', 'diverticulitis', 'diverticulosis', 'edema pulmonary', 'pericardial effusion body substance', 'embolism pulmonary', 'emphysema pulmonary', 'encephalopathy', 'endocarditis', 'epilepsy', 'exanthema', 'failure heart', 'failure heart congestive', 'failure kidney', 'fibroid tumor', 'gastritis', 'gastroenteritis', 'gastroesophageal reflux disease', 'glaucoma', 'gout', 'hemiparesis', 'hemorrhoids', 'hepatitis', 'hepatitis B', 'hepatitis C', 'hernia', 'hernia hiatal', 'hyperbilirubinemia', 'hypercholesterolemia', 'hyperglycemia', 'hyperlipidemia', 'hypertension pulmonary', 'hypertensive disease', 'hypoglycemia', 'hypothyroidism', 'ileus', 'incontinence', 'infection', 'infection urinary tract', 'influenza', 'insufficiency renal', 'ischemia', 'ketoacidosis diabetic', 'kidney disease', 'kidney failure acute', 'lymphatic diseases', 'lymphoma', 'carcinoma breast', 'carcinoma of lung', 'carcinoma prostate', 'malignant neoplasms', 'primary malignant neoplasm', 'carcinoma colon', 'manic disorder', 'melanoma', 'migraine disorders', 'mitral valve insufficiency', 'myocardial infarction', 'neoplasm', 'neoplasm metastasis', 'neuropathy', 'neutropenia', 'obesity', 'obesity morbid', 'osteomyelitis', 'osteoporosis', 'overload fluid', 'pancreatitis', 'pancytopenia', 'paranoia', 'parkinson disease', 'paroxysmal dyspnea', 'peripheral vascular disease', 'personality disorder', 'pneumonia', 'pneumonia aspiration', 'pneumothorax', 'primary carcinoma of the liver cells', 'psychotic disorder', 'pyelonephritis', 'respiratory failure', 'schizophrenia', 'sepsis (invertebrate)', 'sickle cell anemia', 'spasm bronchial', 'stenosis aortic valve', 'suicide attempt', 'tachycardia sinus', 'thrombocytopaenia', 'thrombus', 'tonic-clonic seizures', 'transient ischemic attack', 'tricuspid valve insufficiency', 'ulcer peptic', 'upper respiratory infection', 'Fungal infection', 'Allergy', 'GERD', 'Chronic cholestasis', 'Drug Reaction', 'Peptic ulcer diseae', 'AIDS', 'Diabetes ', 'Gastroenteritis', 'Bronchial Asthma', 'Hypertension ', 'Migraine', 'Cervical spondylosis', 'Paralysis (brain hemorrhage)', 'Jaundice', 'Malaria', 'Chicken pox', 'Dengue', 'Typhoid', 'hepatitis A', 'Hepatitis B', 'Hepatitis C', 'Hepatitis D', 'Hepatitis E', 'Alcoholic hepatitis', 'Tuberculosis', 'Common Cold', 'Pneumonia', 'Dimorphic hemmorhoids(piles)', 'Heart attack', 'Varicose veins', 'Hypothyroidism', 'Hyperthyroidism', 'Hypoglycemia', 'Osteoarthristis', 'Arthritis', '(vertigo) Paroymsal  Positional Vertigo', 'Acne', 'Urinary tract infection', 'Psoriasis', 'Impetigo']
     if 0 <= index < len(disease_names):
         return disease_names[index]
     else:
@@ -199,6 +156,9 @@ selected_features = st.multiselect(
     feature_names,
     default=[]
 )
+
+
+
 
 # Define a function to make probability predictions
 def predict_disease_probs(features):

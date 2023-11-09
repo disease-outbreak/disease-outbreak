@@ -1,5 +1,5 @@
 import pandas as pd
-
+import matplotlib.pyplot as plt
 from sklearn.utils import resample
 from sklearn.dummy import DummyClassifier
 from sklearn.metrics import accuracy_score
@@ -7,7 +7,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
-
+import seaborn as sns
 import joblib  # Import joblib
 
 
@@ -262,10 +262,46 @@ def train_evaluate_random_forest_on_test(X_train, y_train, X_test, y_test, rando
     print(f"Test Accuracy (Random Forest): {test_accuracy:.4f}")
     
     #Save the trained classifier to a joblib file
-    joblib.dump(clf, 'rf_model.sav')
+    joblib.dump(clf.fit(X_train,y_train), 'rf_model.sav')
+
 
     # Return the trained classifier and test accuracy
     return {
         'classifier': clf,
         'test_accuracy': test_accuracy
+<<<<<<< HEAD
     },clf, y_pred_test
+=======
+        
+    }
+
+
+
+
+
+
+def plot_accuracy_bar_chart(train_accuracy, val_accuracy, test_accuracy):
+    # Define the labels and accuracy values
+    labels = ['Training', 'Validation', 'Test']
+    accuracy_values = [train_accuracy, val_accuracy, test_accuracy]
+
+    # Create a bar chart
+    plt.figure(figsize=(8, 6))
+    bars = plt.bar(labels, accuracy_values, color=['lightseagreen', 'lightseagreen', 'lightseagreen'])
+    plt.xlabel(' ')
+    plt.ylabel('')
+    plt.title('Accuracy Metrics')
+    plt.ylim(0, 1)  # Set the y-axis limit to represent accuracy (0 to 1)
+
+    # Add values on top of each bar as percentages
+    for bar in bars:
+        height = bar.get_height()
+        plt.text(bar.get_x() + bar.get_width() / 2, height, f'{height:.0%}', ha='center', va='bottom')
+
+    sns.despine(left=True, bottom=True)
+    plt.tick_params(axis='y', which='both', left=False, right=False)
+    plt.tick_params(axis='x', which='both', bottom=False)
+    plt.yticks([])
+
+    plt.show()
+>>>>>>> e59313b1736359071f52232c1d52153e90232f4a
