@@ -257,12 +257,39 @@ def plot_top_n_tri_grams(tri_gram_counts, n=10):
 
     # Sort the tri_gram_counts dictionary by values (frequencies) in descending order and take top N
     top_n_tri_grams = dict(sorted(tri_gram_counts.items(), key=lambda item: item[1], reverse=True)[:n])
+    
+    formatted_labels = [format_y_label('_'.join(tg)) for tg in list(reversed(list(top_n_tri_grams.keys())))]
 
-    # Visualization of Top N Tri-grams
-    plt.figure(figsize=(10, 5))
-    plt.barh(['_'.join(tg) for tg in top_n_tri_grams.keys()], top_n_tri_grams.values())
-    plt.xlabel('Frequency')
-    plt.ylabel('Tri-grams')
+    # Visualization of Top N Tri-grams (sorted from biggest to smallest) from top to bottom
+    plt.figure(figsize=(10, 6))
+    bars = plt.barh(['_'.join(tg) for tg in list(reversed(list(top_n_tri_grams.keys())))],
+                   list(reversed(list(top_n_tri_grams.values()))), height = .5, color='lightseagreen')
+    plt.xlabel('')
+    plt.ylabel('')
+    # Set the formatted y-axis labels
+    plt.yticks(range(n), formatted_labels)
+    sns.despine(left=True, bottom=True)
+    plt.tick_params(axis='y', which='both', left=False, right=False)
+    plt.tick_params(axis='x', which='both', bottom=False)
+    plt.xticks([])
     plt.title(f'Top {n} Tri-gram Frequencies')
     plt.tight_layout()  # This will often make labels less likely to be cut off
+
+    # Add values at the end of each bar
+    for bar, value in zip(bars, list(reversed(list(top_n_tri_grams.values())))):
+        plt.text(value, bar.get_y() + bar.get_height() / 2, f'{value}', ha='left', va='center')
+
     plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
