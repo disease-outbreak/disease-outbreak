@@ -137,12 +137,15 @@ if st.button("Predict"):
     # Reverse the order of the DataFrame to have the highest probability at the top
     top5_diseases = top5_diseases[::-1]
 
+    # Lightseagreen color
+    bar_color = 'lightseagreen'
+
     # Streamlit app
     st.title('Top 5 Disease Probabilities')
 
-    # Create a horizontal bar chart
+    # Create a horizontal bar chart with lightseagreen color
     fig, ax = plt.subplots()
-    bars = ax.barh(top5_diseases['Disease'], top5_diseases['Probability'])
+    bars = ax.barh(top5_diseases['Disease'], top5_diseases['Probability'], color=bar_color)
     ax.set_ylabel('Predicted Diseases')
     ax.set_xlabel('Probability (%)')
 
