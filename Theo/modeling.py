@@ -269,6 +269,9 @@ def train_evaluate_random_forest_on_test(X_train, y_train, X_test, y_test, rando
     return {
         'classifier': clf,
         'test_accuracy': test_accuracy
+<<<<<<< HEAD
+    },clf, y_pred_test
+=======
         
     }
 
@@ -301,3 +304,4 @@ def plot_accuracy_bar_chart(train_accuracy, val_accuracy, test_accuracy):
     plt.yticks([])
 
     plt.show()
+>>>>>>> e59313b1736359071f52232c1d52153e90232f4a
