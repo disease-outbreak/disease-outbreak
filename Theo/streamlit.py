@@ -130,26 +130,27 @@ if st.button("Predict"):
         'Probability': proba[0] * 100  # Convert probabilities to percentages
     })
 
+    # Assuming disease_probabilities is your DataFrame with columns 'Disease' and 'Probability'
     # Display the top 5 probabilities in a bar chart
     top5_diseases = disease_probabilities.nlargest(5, 'Probability')
+
+    # Reverse the order of the DataFrame to have the highest probability at the top
+    top5_diseases = top5_diseases[::-1]
 
     # Streamlit app
     st.title('Top 5 Disease Probabilities')
 
-    # Create a bar chart
+    # Create a horizontal bar chart
     fig, ax = plt.subplots()
-    bars = ax.bar(top5_diseases['Disease'], top5_diseases['Probability'])
-    ax.set_xlabel('Predicted Diseases')
-    ax.set_ylabel('Probability (%)')
+    bars = ax.barh(top5_diseases['Disease'], top5_diseases['Probability'])
+    ax.set_ylabel('Predicted Diseases')
+    ax.set_xlabel('Probability (%)')
 
-    # Rotate x-axis labels at a 45-degree angle and set font size to 10
-    ax.set_xticklabels(top5_diseases['Disease'], rotation=90, fontsize=10)
-
-    # Display the numbers on top of each bar as whole percentages
+    # Display the numbers on the right of each bar as whole percentages
     for bar in bars:
-        yval = bar.get_height()
-        percentage_label = f'{int(yval)}%'
-        plt.text(bar.get_x() + bar.get_width()/2, yval, percentage_label, ha='center', va='bottom', fontsize=10)
+        xval = bar.get_width()
+        percentage_label = f'{int(xval)}%'
+        plt.text(xval, bar.get_y() + bar.get_height()/2, percentage_label, ha='left', va='center', fontsize=10)
 
     # Display the chart using Streamlit's st.pyplot
     st.pyplot(fig)

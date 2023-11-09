@@ -34,9 +34,10 @@ The primary goal of this project is to develop a predictive model that can predi
 - Other data from the following website to create a dashboard of mortality rates.
 
 ### Data Dictionary
-    
-| Attribute | Definition | Data Type |
-
+|  Column  | Definition                                              | Data Type       |    
+|----------|---------------------------------------------------------|-----------------|
+| Disease  | Different type of diseases patients have in our dataset | Target variable |
+| Symptoms | Different type of symptoms patients have in our dataset | object          |
 
 ***
 </details>
