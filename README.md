@@ -27,7 +27,7 @@ Diagnosis of diseases often requires expertise and thorough medical examination.
 
 ### Goals
     
-The primary goal of this project is to develop a predictive model that can predict a disease with high accuracy. By analyzing data acquired from the World Health Orginization related to disease symptoms in the U.S., we aim to create a reliable and user-friendly tool for individuals and public health organizations.
+The primary goal of this project is to develop a classification model that can predict a disease with high accuracy. By analyzing data acquired from the World Health Orginization related to disease symptoms in the U.S., we aim to create a reliable and user-friendly tool for individuals and public health organizations.
     
 ### Data Source
     
@@ -270,12 +270,11 @@ The Dream Team:
 <details>
   <summary>Click to expand!</summary>
 
+
 Interact with our model and data!
     
 ### Streamlit Application
-    
-    - https://hitzuman-disease-outbreak2-codeupcapstonestreamlit-sqfsjj.streamlit.app
-    
+- [Streamlit Application](https://hitzuman-disease-outbreak2-codeupcapstonestreamlit-sqfsjj.streamlit.app)
+
 ### Tableau Dashboard
-    
-    - https://public.tableau.com/app/profile/nisha.bista/viz/DiseaseMortality/Dashboard12?publish=yes
+- [Tableau Dashboard](https://public.tableau.com/app/profile/nisha.bista/viz/DiseaseMortality/Dashboard12?publish=yes)
