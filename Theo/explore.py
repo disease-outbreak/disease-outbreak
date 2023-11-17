@@ -7,36 +7,7 @@ from scipy.stats import ttest_ind
 import seaborn as sns
 import re
 
-def disease_symptom_correlation(df, disease, symptom, alpha=0.05):
-    """
-    Checks the correlation between a specific disease and symptom using independent T-test.
-    
-    Args:
-    - df (pd.DataFrame): The input DataFrame.
-    - disease (str): The specific disease to be analyzed.
-    - symptom (str): The symptom to be correlated with the disease.
-    - alpha (float): Significance level for the test. Default is 0.05.
-    
-    Returns:
-    - str: Result interpretation of the T-test.
-    """
-    
-    # Filter the data into two groups: the specified 'disease' and 'Other Diseases'
-    disease_group = df[df['disease'] == disease]
-    other_diseases_group = df[df['disease'] != disease]
 
-    # Perform an independent T-test
-    t_statistic, p_value = ttest_ind(disease_group[symptom], other_diseases_group[symptom])
-
-    # Display the results
-    print("T-statistic:", t_statistic)
-    print("P-value:", p_value)
-
-    # Interpret the results
-    if p_value < alpha:
-        return "We reject the null hypothesis, they have a significant correlation."
-    else:
-        return "We fail to reject the null hypothesis, they don't have a significant correlation."
 
 
 
@@ -243,6 +214,38 @@ def generate_wordcloud_from_symptoms(symptom_counts):
     plt.show()
 
 
+def disease_symptom_correlation(df, disease, symptom, alpha=0.05):
+    """
+    Checks the correlation between a specific disease and symptom using independent T-test.
+    
+    Args:
+    - df (pd.DataFrame): The input DataFrame.
+    - disease (str): The specific disease to be analyzed.
+    - symptom (str): The symptom to be correlated with the disease.
+    - alpha (float): Significance level for the test. Default is 0.05.
+    
+    Returns:
+    - str: Result interpretation of the T-test.
+    """
+    
+    # Filter the data into two groups: the specified 'disease' and 'Other Diseases'
+    disease_group = df[df['disease'] == disease]
+    other_diseases_group = df[df['disease'] != disease]
+
+    # Perform an independent T-test
+    t_statistic, p_value = ttest_ind(disease_group[symptom], other_diseases_group[symptom])
+
+    # Display the results
+    print("T-statistic:", t_statistic)
+    print("P-value:", p_value)
+
+    # Interpret the results
+    if p_value < alpha:
+        return "We reject the null hypothesis, they have a significant correlation."
+    else:
+        return "We fail to reject the null hypothesis, they don't have a significant correlation."
+
+
 
 
 def plot_top_n_tri_grams(tri_gram_counts, n=10):
@@ -281,3 +284,4 @@ def plot_top_n_tri_grams(tri_gram_counts, n=10):
         plt.text(value, bar.get_y() + bar.get_height() / 2, f'{value}', ha='left', va='center')
 
     plt.show()
+
