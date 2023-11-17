@@ -5,44 +5,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 
-def process_dataframe(df):
-    """
-    Process the dataframe by:
-    - Converting all column names to lowercase.
-    - Converting symptom columns to string type for consistent data type.
 
-    Parameters:
-    df (pandas.DataFrame): The input dataframe.
-
-    Returns:
-    pandas.DataFrame: The processed dataframe.
-    """
-    
-    # Convert column names to lowercase
-    df.columns = [col.lower() for col in df.columns]
-    
-    # Convert symptom columns to string type for consistent data type
-    df[df.columns[1:]] = df[df.columns[1:]].astype(str)
-    
-    return df
-
-
-def one_hot_encode_symptoms(df):
-    """
-    One-hot encodes the symptom columns of the input DataFrame.
-
-    Parameters:
-    - df (pd.DataFrame): Input dataframe with symptom columns starting from the second column.
-
-    Returns:
-    - pd.DataFrame: A dataframe with one-hot encoded symptom columns.
-    """
-    
-    # One-hot encode each symptom column
-    encoded_list = [pd.get_dummies(df[col], prefix="", prefix_sep="") for col in df.columns[1:]]
-    encoded_df = pd.concat(encoded_list, axis=1)
-    
-    return encoded_df
 
 
 
@@ -338,6 +301,47 @@ def prepare_pivot_df(pivot_df):
     
     # Simply return the pivot_df without repeating rows
     return pivot_df
+
+
+def process_dataframe(df):
+    """
+    Process the dataframe by:
+    - Converting all column names to lowercase.
+    - Converting symptom columns to string type for consistent data type.
+
+    Parameters:
+    df (pandas.DataFrame): The input dataframe.
+
+    Returns:
+    pandas.DataFrame: The processed dataframe.
+    """
+    
+    # Convert column names to lowercase
+    df.columns = [col.lower() for col in df.columns]
+    
+    # Convert symptom columns to string type for consistent data type
+    df[df.columns[1:]] = df[df.columns[1:]].astype(str)
+    
+    return df
+
+
+def one_hot_encode_symptoms(df):
+    """
+    One-hot encodes the symptom columns of the input DataFrame.
+
+    Parameters:
+    - df (pd.DataFrame): Input dataframe with symptom columns starting from the second column.
+
+    Returns:
+    - pd.DataFrame: A dataframe with one-hot encoded symptom columns.
+    """
+    
+    # One-hot encode each symptom column
+    encoded_list = [pd.get_dummies(df[col], prefix="", prefix_sep="") for col in df.columns[1:]]
+    encoded_df = pd.concat(encoded_list, axis=1)
+    
+    return encoded_df
+
 
 
 

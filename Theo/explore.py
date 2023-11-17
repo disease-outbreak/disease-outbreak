@@ -78,10 +78,6 @@ def format_y_label(label):
     formatted_label = label.replace("_", " ").capitalize()
     return formatted_label
 
-def format_y_label2(label):
-    # Replace underscores with spaces and capitalize the first letter
-    formatted_label = label.replace("_", " ")
-    return formatted_label
 
 
 def plot_disease_counts(df, n=10):
@@ -116,6 +112,62 @@ def plot_disease_counts(df, n=10):
     plt.tick_params(axis='x', which='both', bottom=False)
     plt.xticks([])
     plt.show()
+
+def generate_ngrams_from_df(df):
+    """
+    Generate and count bi-grams and tri-grams from a DataFrame containing symptom words.
+    
+    Args:
+    - df (pd.DataFrame): A DataFrame containing symptom words. One of the columns must be named 'disease'.
+    
+    Returns:
+    - bi_gram_counts (Counter): A counter object with bi-gram frequencies.
+    - tri_gram_counts (Counter): A counter object with tri-gram frequencies.
+    """
+    
+    # Drop the 'Disease' column and flatten the DataFrame to get a list of all symptom words
+    all_symptoms = df.drop(columns=['disease']).values.flatten()
+
+    # Convert all values to strings and filter out the string representation of NaN (to clean the data)
+    all_symptoms = [str(s) for s in all_symptoms if str(s) != 'nan' and str(s) != 'NaN']
+
+    # Tokenize the symptoms: split each symptom at underscores to get individual words
+    tokens = list(chain.from_iterable([symptom.split('_') for symptom in all_symptoms]))
+
+    # Generate bi-grams (2 word combinations) and tri-grams (3 word combinations) from the token list
+    bi_grams = list(ngrams(tokens, 2))
+    tri_grams = list(ngrams(tokens, 3))
+
+    # Count frequencies of each bi-gram and tri-gram to identify most common combinations
+    bi_gram_counts = Counter(bi_grams)
+    tri_gram_counts = Counter(tri_grams)
+    
+    return bi_gram_counts, tri_gram_counts
+
+
+
+
+def plot_top_n_bi_grams(bi_gram_counts, n=10):
+    """
+    This function sorts the bi-gram counts dictionary by values in descending order,
+    and plots the top N bi-grams and their frequencies.
+
+    :param bi_gram_counts: A dictionary with bi-grams as keys and their counts as values.
+    :param n: The number of top bi-grams to plot.
+    """
+
+    # Sort the bi_gram_counts dictionary by values (frequencies) in descending order and take top N
+    top_n_bi_grams = dict(sorted(bi_gram_counts.items(), key=lambda item: item[1], reverse=True)[:n])
+
+    # Visualization of Top N Bi-grams
+    plt.figure(figsize=(10, 5))
+    plt.barh(['_'.join(bg) for bg in top_n_bi_grams.keys()], top_n_bi_grams.values())
+    plt.xlabel('Bi-grams')
+    plt.ylabel('Frequency')
+    plt.title(f'Top {n} Bi-gram Frequencies')
+    plt.tight_layout()
+    plt.show()
+
 
 
 
@@ -192,63 +244,6 @@ def generate_wordcloud_from_symptoms(symptom_counts):
 
 
 
-def generate_ngrams_from_df(df):
-    """
-    Generate and count bi-grams and tri-grams from a DataFrame containing symptom words.
-    
-    Args:
-    - df (pd.DataFrame): A DataFrame containing symptom words. One of the columns must be named 'disease'.
-    
-    Returns:
-    - bi_gram_counts (Counter): A counter object with bi-gram frequencies.
-    - tri_gram_counts (Counter): A counter object with tri-gram frequencies.
-    """
-    
-    # Drop the 'Disease' column and flatten the DataFrame to get a list of all symptom words
-    all_symptoms = df.drop(columns=['disease']).values.flatten()
-
-    # Convert all values to strings and filter out the string representation of NaN (to clean the data)
-    all_symptoms = [str(s) for s in all_symptoms if str(s) != 'nan' and str(s) != 'NaN']
-
-    # Tokenize the symptoms: split each symptom at underscores to get individual words
-    tokens = list(chain.from_iterable([symptom.split('_') for symptom in all_symptoms]))
-
-    # Generate bi-grams (2 word combinations) and tri-grams (3 word combinations) from the token list
-    bi_grams = list(ngrams(tokens, 2))
-    tri_grams = list(ngrams(tokens, 3))
-
-    # Count frequencies of each bi-gram and tri-gram to identify most common combinations
-    bi_gram_counts = Counter(bi_grams)
-    tri_gram_counts = Counter(tri_grams)
-    
-    return bi_gram_counts, tri_gram_counts
-
-
-
-
-def plot_top_n_bi_grams(bi_gram_counts, n=10):
-    """
-    This function sorts the bi-gram counts dictionary by values in descending order,
-    and plots the top N bi-grams and their frequencies.
-
-    :param bi_gram_counts: A dictionary with bi-grams as keys and their counts as values.
-    :param n: The number of top bi-grams to plot.
-    """
-
-    # Sort the bi_gram_counts dictionary by values (frequencies) in descending order and take top N
-    top_n_bi_grams = dict(sorted(bi_gram_counts.items(), key=lambda item: item[1], reverse=True)[:n])
-
-    # Visualization of Top N Bi-grams
-    plt.figure(figsize=(10, 5))
-    plt.barh(['_'.join(bg) for bg in top_n_bi_grams.keys()], top_n_bi_grams.values())
-    plt.xlabel('Bi-grams')
-    plt.ylabel('Frequency')
-    plt.title(f'Top {n} Bi-gram Frequencies')
-    plt.tight_layout()
-    plt.show()
-
-
-
 
 def plot_top_n_tri_grams(tri_gram_counts, n=10):
     """
@@ -262,7 +257,7 @@ def plot_top_n_tri_grams(tri_gram_counts, n=10):
     # Sort the tri_gram_counts dictionary by values (frequencies) in descending order and take top N
     top_n_tri_grams = dict(sorted(tri_gram_counts.items(), key=lambda item: item[1], reverse=True)[:n])
     
-    formatted_labels = [format_y_label2('_'.join(tg)) for tg in list(reversed(list(top_n_tri_grams.keys())))]
+    formatted_labels = [format_y_label('_'.join(tg)) for tg in list(reversed(list(top_n_tri_grams.keys())))]
 
     # Visualization of Top N Tri-grams (sorted from biggest to smallest) from top to bottom
     plt.figure(figsize=(10, 6))
@@ -277,8 +272,10 @@ def plot_top_n_tri_grams(tri_gram_counts, n=10):
     plt.tick_params(axis='x', which='both', bottom=False)
     plt.xticks([])
     plt.title(f'Top {n} Tri-gram Frequencies')
+<<<<<<< HEAD
     plt.tight_layout()
     plt.show()
+=======
     plt.tight_layout()  # This will often make labels less likely to be cut off
 
     # Add values at the end of each bar
@@ -286,3 +283,17 @@ def plot_top_n_tri_grams(tri_gram_counts, n=10):
         plt.text(value, bar.get_y() + bar.get_height() / 2, f'{value}', ha='left', va='center')
 
     plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> e59313b1736359071f52232c1d52153e90232f4a
