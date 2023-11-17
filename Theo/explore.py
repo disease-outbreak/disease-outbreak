@@ -272,10 +272,8 @@ def plot_top_n_tri_grams(tri_gram_counts, n=10):
     plt.tick_params(axis='x', which='both', bottom=False)
     plt.xticks([])
     plt.title(f'Top {n} Tri-gram Frequencies')
-<<<<<<< HEAD
     plt.tight_layout()
     plt.show()
-=======
     plt.tight_layout()  # This will often make labels less likely to be cut off
 
     # Add values at the end of each bar
@@ -283,17 +281,3 @@ def plot_top_n_tri_grams(tri_gram_counts, n=10):
         plt.text(value, bar.get_y() + bar.get_height() / 2, f'{value}', ha='left', va='center')
 
     plt.show()
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> e59313b1736359071f52232c1d52153e90232f4a

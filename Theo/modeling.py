@@ -12,30 +12,7 @@ import joblib  # Import joblib
 
 
 
-def encode_disease_column(train_df, val_df, test_df, column_name):
-    """
-    Encodes the specified column in the training data and applies the encoding to
-    the validation and test data.
 
-    :param train_df: DataFrame containing the training data.
-    :param val_df: DataFrame containing the validation data.
-    :param test_df: DataFrame containing the test data.
-    :param column_name: The name of the column to be encoded.
-    :return: A tuple of the modified DataFrames and the fitted LabelEncoder.
-    """
-
-    # Initialize the Label Encoder
-    encoder = LabelEncoder()
-
-    # Fit the encoder on the column of the training data
-    train_df[column_name + '_encoded'] = encoder.fit_transform(train_df[column_name])
-
-    # Transform the column of validation and test data using the fitted encoder
-    val_df[column_name + '_encoded'] = encoder.transform(val_df[column_name])
-    test_df[column_name + '_encoded'] = encoder.transform(test_df[column_name])
-
-    # Return the modified DataFrames and the fitted LabelEncoder
-    return train_df, val_df, test_df, encoder
 
 
 def balance_data(data):
@@ -154,6 +131,31 @@ def train_evaluate_random_forest(X_train, y_train, X_val, y_val, random_state=42
     }
 
 
+def encode_disease_column(train_df, val_df, test_df, column_name):
+    """
+    Encodes the specified column in the training data and applies the encoding to
+    the validation and test data.
+
+    :param train_df: DataFrame containing the training data.
+    :param val_df: DataFrame containing the validation data.
+    :param test_df: DataFrame containing the test data.
+    :param column_name: The name of the column to be encoded.
+    :return: A tuple of the modified DataFrames and the fitted LabelEncoder.
+    """
+
+    # Initialize the Label Encoder
+    encoder = LabelEncoder()
+
+    # Fit the encoder on the column of the training data
+    train_df[column_name + '_encoded'] = encoder.fit_transform(train_df[column_name])
+
+    # Transform the column of validation and test data using the fitted encoder
+    val_df[column_name + '_encoded'] = encoder.transform(val_df[column_name])
+    test_df[column_name + '_encoded'] = encoder.transform(test_df[column_name])
+
+    # Return the modified DataFrames and the fitted LabelEncoder
+    return train_df, val_df, test_df, encoder
+
 
 
 def train_evaluate_logistic_regression(X_train, y_train, X_val, y_val, max_iter=10000, random_state=42):
@@ -259,17 +261,22 @@ def train_evaluate_random_forest_on_test(X_train, y_train, X_test, y_test, rando
     
     # Calculate accuracy on the test set
     test_accuracy = accuracy_score(y_test, y_pred_test)
-    print(f"Test Accuracy (Random Forest): {test_accuracy:.1f}")
+    print(f"Test Accuracy (Random Forest): {test_accuracy:.4f}")
     
     #Save the trained classifier to a joblib file
-    joblib.dump(clf.fit(X_train,y_train), 'rf_model.joblib')
+    joblib.dump(clf.fit(X_train,y_train), 'rf_model.sav')
 
 
     # Return the trained classifier and test accuracy
     return {
         'classifier': clf,
         'test_accuracy': test_accuracy
+    },clf, y_pred_test        
     }
+
+
+
+
 
 
 def plot_accuracy_bar_chart(train_accuracy, val_accuracy, test_accuracy):
