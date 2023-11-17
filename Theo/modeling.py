@@ -259,25 +259,17 @@ def train_evaluate_random_forest_on_test(X_train, y_train, X_test, y_test, rando
     
     # Calculate accuracy on the test set
     test_accuracy = accuracy_score(y_test, y_pred_test)
-    print(f"Test Accuracy (Random Forest): {test_accuracy:.4f}")
+    print(f"Test Accuracy (Random Forest): {test_accuracy:.1f}")
     
     #Save the trained classifier to a joblib file
-    joblib.dump(clf.fit(X_train,y_train), 'rf_model.sav')
+    joblib.dump(clf.fit(X_train,y_train), 'rf_model.joblib')
 
 
     # Return the trained classifier and test accuracy
     return {
         'classifier': clf,
         'test_accuracy': test_accuracy
-<<<<<<< HEAD
-    },clf, y_pred_test
-=======
-        
     }
-
-
-
-
 
 
 def plot_accuracy_bar_chart(train_accuracy, val_accuracy, test_accuracy):
@@ -304,4 +296,3 @@ def plot_accuracy_bar_chart(train_accuracy, val_accuracy, test_accuracy):
     plt.yticks([])
 
     plt.show()
->>>>>>> e59313b1736359071f52232c1d52153e90232f4a

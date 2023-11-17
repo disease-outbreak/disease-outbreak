@@ -10,6 +10,7 @@
 [[Conclusion](#conclusion)]
 [[Recreate](#recreate)]
 [[Meet the Team](#team)]
+[[Interact](#interact)]
 ___
 
 
@@ -26,7 +27,7 @@ Diagnosis of diseases often requires expertise and thorough medical examination.
 
 ### Goals
     
-The primary goal of this project is to develop a predictive model that can predict a disease with high accuracy. By analyzing data acquired from the World Health Orginization related to disease symptoms in the U.S., we aim to create a reliable and user-friendly tool for individuals and public health organizations.
+The primary goal of this project is to develop a classification model that can predict a disease with high accuracy. By analyzing data acquired from the World Health Orginization related to disease symptoms in the U.S., we aim to create a reliable and user-friendly tool for individuals and public health organizations.
     
 ### Data Source
     
@@ -34,10 +35,10 @@ The primary goal of this project is to develop a predictive model that can predi
 - Other data from the following website to create a dashboard of mortality rates.
 
 ### Data Dictionary
-    
-| Column | Definition | Data Type |
-| Disease | Different type of diseases patients have in our dataset | Target variable |
-| Symptoms | Different type of symptoms patients have in our dataset | object |
+|  Column  | Definition                                              | Data Type       |    
+|----------|---------------------------------------------------------|-----------------|
+| Disease  | Different type of diseases patients have in our dataset | Target variable |
+| Symptoms | Different type of symptoms patients have in our dataset | object          |
 
 ***
 </details>
@@ -230,7 +231,7 @@ The Random Forest model, with a test accuracy of 89.58%, was identified as the m
 - Implement a Feedback Loop: Develop a system to collect user and professional feedback on the model’s predictions to facilitate ongoing learning and improvement.
 - Focus on Interpretability: Devote efforts to make the model's decision process more transparent, aiding healthcare professionals in understanding the rationale behind predictions, which is crucial for medical applications.
 
-
+***
 </details>  
 
 
@@ -258,3 +259,22 @@ The Dream Team:
 
 >>>>>>>>>>>>>>>
 .
+
+</details>  
+
+
+## <a name="interact"></a> 
+![interact](https://github.com/disease-outbreak/disease-outbreak/blob/main/Marcelino/Screenshot%202023-11-09%20at%202.35.07%20PM.png?raw=true)
+[[Back to top](#top)]
+
+<details>
+  <summary>Click to expand!</summary>
+
+
+Interact with our model and data!
+    
+### Streamlit Application
+- [Streamlit Application](https://hitzuman-disease-outbreak2-codeupcapstonestreamlit-sqfsjj.streamlit.app)
+
+### Tableau Dashboard
+- [Tableau Dashboard](https://public.tableau.com/app/profile/nisha.bista/viz/DiseaseMortality/Dashboard12?publish=yes)

@@ -1,10 +1,13 @@
 import streamlit as st
 import pandas as pd
-import joblib
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
 import matplotlib.pyplot as plt
+import joblib
 
-# Load the saved Random Forest classifier
-loaded_model = joblib.load('rf_model.sav')
+# Load your dataset
+df = pd.read_csv('combined_disease_df_final.csv')
 
 def add_bg_from_url():
     st.markdown(
@@ -27,7 +30,6 @@ add_bg_from_url()
 
 
 
-import streamlit as st
 
 # Banner
 st.markdown("# Revolutionizing Disease Prediction with Advanced Data Science")
@@ -88,132 +90,82 @@ st.markdown("### Model Prediction")
 st.markdown("A detailed explanation of how the Random Forest model utilizes the input symptoms to predict possible diseases, with a note on the importance of professional medical consultation for accurate diagnosis.")
 
 
+#=============================================================================================
+# Encode the target variable 'disease' using LabelEncoder
+le = LabelEncoder()
+df['disease_code'] = le.fit_transform(df['disease'])
+
+# Separate features and target variable
+X = df.drop(columns=['disease', 'count of disease occurrence', 'disease_code'])
+y = df['disease_code']
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Train a RandomForestClassifier
+clf = RandomForestClassifier(random_state=42)
+clf.fit(X_train, y_train)
+
+# Create a Streamlit app
+st.title("Symptom-Based Disease Probability Predictor")
+
+# Create a multiselect dropdown for selecting symptoms
+selected_symptoms = st.multiselect("Select Symptoms", X.columns)
+
+# Sort selected symptoms in ascending order
+selected_symptoms.sort()
+
+# Create a Predict button
+if st.button("Predict"):
+    # Create a new instance with selected symptoms
+    new_instance = pd.DataFrame(0, index=[0], columns=X.columns)
+    new_instance[selected_symptoms] = 1
+
+    # Make predictions using predict_proba for the new instance
+    proba = clf.predict_proba(new_instance)
+
+    # Extract the predicted probabilities for each disease
+    disease_probabilities = pd.DataFrame({
+        'Disease': le.inverse_transform(clf.classes_),
+        'Probability': proba[0] * 100  # Convert probabilities to percentages
+    })
+
+    # Assuming disease_probabilities is your DataFrame with columns 'Disease' and 'Probability'
+    # Display the top 5 probabilities in a bar chart
+    top5_diseases = disease_probabilities.nlargest(5, 'Probability')
+
+    # Reverse the order of the DataFrame to have the highest probability at the top
+    top5_diseases = top5_diseases[::-1]
+
+    # Lightseagreen color
+    bar_color = 'lightseagreen'
+
+    # Streamlit app
+    st.title('Top 5 Disease Probabilities')
+
+    # Create a horizontal bar chart with lightseagreen color
+    fig, ax = plt.subplots()
+    bars = ax.barh(top5_diseases['Disease'], top5_diseases['Probability'], color=bar_color)
+    ax.set_ylabel('Predicted Diseases')
+    ax.set_xlabel('Probability (%)')
+
+    # Display the numbers on the right of each bar as whole percentages
+    for bar in bars:
+        xval = bar.get_width()
+        percentage_label = f'{int(xval)}%'
+        plt.text(xval, bar.get_y() + bar.get_height()/2, percentage_label, ha='left', va='center', fontsize=10)
+
+    # Display the chart using Streamlit's st.pyplot
+    st.pyplot(fig)
+
+
+
+#=============================================================================================
 
 
 
 
 
-
-
-def encode_disease(index):
-    disease_names = ["Alzheimer's disease", 'Pneumocystis carinii pneumonia', 'accident cerebrovascular', 'hiv infections', 'adenocarcinoma', 'adhesion', 'affect labile', 'anemia', 'anxiety state', 'aphasia', 'arthritis', 'asthma', 'bacteremia', 'benign prostatic hypertrophy', 'bipolar disorder', 'bronchitis', 'oral candidiasis', 'carcinoma', 'cardiomyopathy', 'cellulitis', 'cholecystitis', 'biliary calculus', 'chronic alcoholic intoxication', 'chronic kidney failure', 'chronic obstructive airway disease', 'cirrhosis', 'colitis', 'confusion', 'coronary heart disease', 'decubitus ulcer', 'deep vein thrombosis', 'degenerative polyarthritis', 'deglutition disorder', 'dehydration', 'delirium', 'delusion', 'dementia', 'dependence', 'depressive disorder', 'diabetes', 'diverticulitis', 'diverticulosis', 'edema pulmonary', 'pericardial effusion body substance', 'embolism pulmonary', 'emphysema pulmonary', 'encephalopathy', 'endocarditis', 'epilepsy', 'exanthema', 'failure heart', 'failure heart congestive', 'failure kidney', 'fibroid tumor', 'gastritis', 'gastroenteritis', 'gastroesophageal reflux disease', 'glaucoma', 'gout', 'hemiparesis', 'hemorrhoids', 'hepatitis', 'hepatitis B', 'hepatitis C', 'hernia', 'hernia hiatal', 'hyperbilirubinemia', 'hypercholesterolemia', 'hyperglycemia', 'hyperlipidemia', 'hypertension pulmonary', 'hypertensive disease', 'hypoglycemia', 'hypothyroidism', 'ileus', 'incontinence', 'infection', 'infection urinary tract', 'influenza', 'insufficiency renal', 'ischemia', 'ketoacidosis diabetic', 'kidney disease', 'kidney failure acute', 'lymphatic diseases', 'lymphoma', 'carcinoma breast', 'carcinoma of lung', 'carcinoma prostate', 'malignant neoplasms', 'primary malignant neoplasm', 'carcinoma colon', 'manic disorder', 'melanoma', 'migraine disorders', 'mitral valve insufficiency', 'myocardial infarction', 'neoplasm', 'neoplasm metastasis', 'neuropathy', 'neutropenia', 'obesity', 'obesity morbid', 'osteomyelitis', 'osteoporosis', 'overload fluid', 'pancreatitis', 'pancytopenia', 'paranoia', 'parkinson disease', 'paroxysmal dyspnea', 'peripheral vascular disease', 'personality disorder', 'pneumonia', 'pneumonia aspiration', 'pneumothorax', 'primary carcinoma of the liver cells', 'psychotic disorder', 'pyelonephritis', 'respiratory failure', 'schizophrenia', 'sepsis (invertebrate)', 'sickle cell anemia', 'spasm bronchial', 'stenosis aortic valve', 'suicide attempt', 'tachycardia sinus', 'thrombocytopaenia', 'thrombus', 'tonic-clonic seizures', 'transient ischemic attack', 'tricuspid valve insufficiency', 'ulcer peptic', 'upper respiratory infection', 'Fungal infection', 'Allergy', 'GERD', 'Chronic cholestasis', 'Drug Reaction', 'Peptic ulcer diseae', 'AIDS', 'Diabetes ', 'Gastroenteritis', 'Bronchial Asthma', 'Hypertension ', 'Migraine', 'Cervical spondylosis', 'Paralysis (brain hemorrhage)', 'Jaundice', 'Malaria', 'Chicken pox', 'Dengue', 'Typhoid', 'hepatitis A', 'Hepatitis B', 'Hepatitis C', 'Hepatitis D', 'Hepatitis E', 'Alcoholic hepatitis', 'Tuberculosis', 'Common Cold', 'Pneumonia', 'Dimorphic hemmorhoids(piles)', 'Heart attack', 'Varicose veins', 'Hypothyroidism', 'Hyperthyroidism', 'Hypoglycemia', 'Osteoarthristis', 'Arthritis', '(vertigo) Paroymsal  Positional Vertigo', 'Acne', 'Urinary tract infection', 'Psoriasis', 'Impetigo']
-    if 0 <= index < len(disease_names):
-        return disease_names[index]
-    else:
-        return None  # Return None for out-of-range indices
-
-
-# Streamlit app
-st.title('Disease Prediction App')
-
-# Create input fields for feature values
-feature_names = [
-    "spotting_urination", "achalasia", "ambidexterity", "ascites", "asthenia", 
-    "behavior_showing_increased_motor_activity", "breakthrough_pain", "chills", "clonus", "cough", 
-    "cyanosis", "diarrhoea", "drool", "drowsiness", "drowsiness^sleepy", "dysarthria", "breathlessness", 
-    "dyspnea_on_exertion", "ecchymosis", "energy_increased", "erythema", "extreme_exhaustion", "fall", 
-    "fecaluria", "feeling_suicidal", "foul_smell_ofurine", "high_fever", "flatulence", "bleeding", 
-    "hallucinations_auditory", "hematuria", "heme_positive", "hemiplegia", "hot_flush", "hyperkalemia", 
-    "hypokinesia", "hypoproteinemia", "inappropriate_affect", "intoxication", "left_atrial_hypertrophy", 
-    "lesion", "loose_associations", "mass_in_breast", "mass_of_body_structure", "mediastinal_shift", 
-    "mental_status_changes", "moan", "nightmare", "orthopnea", "out_of_breath", "pain", "abdominal_pain", 
-    "pain_chest", "pain,__chest", "para_2", "paraparesis", "paresthesia", "pericardial_friction_rub", 
-    "pleuritic_pain", "polyuria", "prostatism", "pulsus_paradoxus", "rale", "seizure", "dyspnea", 
-    "breathlessness", "sore_to_touch", "speech_slurred", "suicidal", "swelling", "dischromic_patches", 
-    "thicken", "transaminitis", "tremor", "uncoordination", "unresponsiveness", "unsteady_gait", 
-    "urgency_of_micturition", "nausea_and_vomiting", "wheezing", "anxiety", "yellow_sputum", 
-    "abnormal_menstruation", "acidity", "acute_liver_failure", "altered_sensorium", "back_pain", 
-    "belly_pain", "blackheads", "bladder_discomfort", "blister", "blood_in_sputum", "bloody_stool", 
-    "blurred_and_distorted_vision", "brittle_nails", "bruising", "burning_micturition", "chest_pain", 
-    "cold_hands_and_feets", "coma", "congestion", "constipation", "continuous_feel_of_urine", 
-    "continuous_sneezing", "cramps", "dark_urine", "dehydration", "depression", "dischromic _patches", 
-    "distention_of_abdomen", "dizziness", "drying_and_tingling_lips", "enlarged_thyroid", 
-    "excessive_hunger", "extra_marital_contacts", "family_history", "fast_heart_rate", "fatigue", 
-    "fluid_overload", "foul_smell_of urine", "headache", "hip_joint_pain", "history_of_alcohol_consumption", 
-    "increased_appetite", "indigestion", "inflammatory_nails", "internal_itching", "irregular_sugar_level", 
-    "irritability", "irritation_in_anus", "joint_pain", "knee_pain", "lack_of_concentration", "lethargy", 
-    "loss_of_appetite", "loss_of_balance", "loss_of_smell", "malaise", "mild_fever", "mood_swings", 
-    "movement_stiffness", "mucoid_sputum", "muscle_pain", "muscle_wasting", "muscle_weakness", 
-    "nausea", "neck_pain", "nodal_skin_eruptions", "obesity", "pain_behind_the_eyes", 
-    "pain_during_bowel_movements", "pain_in_anal_region", "painful_walking", "palpitations", 
-    "passage_of_gases", "patches_in_throat", "phlegm", "prominent_veins_on_calf", "puffy_face_and_eyes", 
-    "pus_filled_pimples", "receiving_blood_transfusion", "receiving_unsterile_injections", 
-    "red_sore_around_nose", "red_spots_over_body", "redness_of_eyes", "restlessness", "runny_nose", 
-    "rusty_sputum", "scurring", "shivering", "silver_like_dusting", "sinus_pressure", "skin_peeling", 
-    "skin_rash", "slurred_speech", "small_dents_in_nails", "spinning_movements", "spotting_ urination", 
-    "stiff_neck", "stomach_bleeding", "stomach_pain", "sunken_eyes", "sweating", "swelled_lymph_nodes", 
-    "swelling_joints", "swelling_of_stomach", "swollen_blood_vessels", "swollen_extremeties", "swollen_legs", 
-    "throat_irritation", "toxic_look_(typhos)", "ulcers_on_tongue", "unsteadiness", 
-    "visual_disturbances", "vomiting", "watering_from_eyes", "weakness_in_limbs", "weakness_of_one_body_side", 
-    "weight_gain", "weight_loss", "yellow_crust_ooze", "yellow_urine", "yellowing_of_eyes", "yellowish_skin", 
-    "itching", "pneumonoultramicroscopicsilicovolcanoconiosis", "other"
-]
-
-
-# Create a dropdown multiselect widget for feature values with an empty list as the default
-selected_features = st.multiselect(
-    'Select Features',
-    feature_names,
-    default=[]
-)
-
-
-
-
-# Define a function to make probability predictions
-def predict_disease_probs(features):
-    prediction_probs = loaded_model.predict_proba([features])
-    return prediction_probs
-
-
-# Create a dictionary to store feature values
-feature_values = {feature_name: 1 if feature_name in selected_features else 0 for feature_name in feature_names}
-
-# Make probability predictions
-if st.button('Predict'):
-    if not selected_features:
-        st.warning('Please select at least one feature before predicting.')
-    else:
-        prediction_probs = predict_disease_probs(list(feature_values.values()))
-
-        # Convert probabilities to percentages
-        percentages = [prob * 100 for prob in prediction_probs[0]]
-
-        # Create a DataFrame to store the results
-        results_df = pd.DataFrame({
-            'Disease': [encode_disease(i) for i in range(len(loaded_model.classes_))],
-            'Probability': percentages
-        })
-
-        # Filter and display only diseases with probabilities > 0.0
-        filtered_results = results_df[results_df['Probability'] > 0.0]
-
-        # Sort the results by probability in descending order
-        sorted_results = filtered_results.sort_values(by='Probability', ascending=False).head(5)
-
-        # Create a red-themed bar chart with transparency and percentages on top of each bar
-        fig, ax = plt.subplots()
-        bars = ax.bar(sorted_results['Disease'], sorted_results['Probability'], alpha=0.5, color='red')
-        ax.set_xticklabels(sorted_results['Disease'], rotation=45, fontsize=10, color='black')
-        plt.xlabel('Disease', color='white')
-        plt.ylabel('Probability (%)', color='white')
-        ax.yaxis.label.set_color('white')
-        ax.tick_params(axis='x', colors='white')
-        ax.tick_params(axis='y', colors='white')
-
-        for bar in bars:
-            height = bar.get_height()
-            ax.annotate(f'{height:.1f}%', xy=(bar.get_x() + bar.get_width() / 2, height), ha='center', va='bottom', fontsize=15, color='white')
-
-
-
-        # Set the background color of the plot to black
-        fig.patch.set_facecolor('black')
-        ax.set_facecolor('black')
-
-        st.pyplot(fig)
-        
-        
 
 # Conclusion and Recommendations
 conclusion_and_recommendations = """
